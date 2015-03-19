@@ -31,7 +31,7 @@ class Player{
 			else output += c.valNum();
 		});
 		for (;numAces > 0; numAces--){
-			output += (output + 10 + numAces - 1 <= 21) ? 10 : 1;
+			output += (output + 11 + numAces - 1 <= 21) ? 11 : 1;
 		}
 		return output;
 	}

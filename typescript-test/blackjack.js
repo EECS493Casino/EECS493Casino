@@ -91,7 +91,7 @@ var Player = (function () {
                 output += c.valNum();
         });
         for (; numAces > 0; numAces--) {
-            output += (output + 10 + numAces - 1 <= 21) ? 10 : 1;
+            output += (output + 11 + numAces - 1 <= 21) ? 11 : 1;
         }
         return output;
     };
@@ -143,7 +143,6 @@ function updateUI() {
     var dealercards = document.getElementById('dealercards');
     dealercards.innerHTML = "";
     allPlayers.getPlayer(0).hand.forEach(function (c) {
-        console.log("<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\">");
         dealercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
         //dealercards.innerHTML += "<p>" + c.val() + " of " + c.suit + "</p>";
     });
