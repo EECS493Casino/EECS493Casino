@@ -8,7 +8,7 @@
 # This compile requires the most recent TypeScript compiler because
 # of syntax changes, mostly the ability to do -o
 TypeScriptCompiler:= tsc
-output:= blackjack.js
+output:= js/blackjack.js
 input:= deck.ts player.ts main.ts 
 ui:= ui.ts
 
