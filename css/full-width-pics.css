@@ -17,13 +17,21 @@ body {
     -o-background-size: cover;
 }
 
+.little{
+    height: 40px;
+    width:25px;
+    padding-top: 3px; 
+}
+
 .image-bg-fluid-height {
-	background: url("../images/casino_table.jpeg") no-repeat center center scroll;
+	/*background: url("../images/aces.jpg") no-repeat center center scroll;*/
     padding: 100px 0;
+    width: 100%;
+    height: 
 }
 
 .image-bg-fixed-height {
-	background: url("../images/dogs_playing_poker.jpg") no-repeat center center scroll;
+	background: url("../images/aces.jpg") no-repeat center center scroll;
     height: 450px;
 }
 
@@ -31,13 +39,65 @@ body {
 	margin: 0 auto;
 }
 
+
+td{
+    padding-bottom: 2%;
+    padding-left: 1%;
+}
+
+.table td {
+   text-align: center;   
+}
+
+.navbar{
+    background-color: #00CC99;
+}
+
+
+.button-link{
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+h1{
+    font: Monotype Corsiva, serif;
+}
+
+
 section {
     padding: 75px 0;
 }
 
 .section-heading {
     margin: 30px 0;
-    font-size: 4em;
+    font: 100px Segoe WP Black; 
+    color: black;
+    /*font-size: 4em;*/
+    /*text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;*/
+    text-shadow: 1px 1px 0 #0080FF,
+    -1px 1px 0 #0080FF,
+    1px -1px 0 #0080FF,
+    -1px -1px 0 #0080FF,
+    0px 1px 0 #0080FF,
+    0px -1px 0 #0080FF,
+    -1px 0px 0 #0080FF,
+    1px 0px 0 #0080FF,
+    2px 2px 0 #0080FF,
+    -2px 2px 0 #0080FF,
+    2px -2px 0 #0080FF,
+    -2px -2px 0 #0080FF,
+    0px 2px 0 #0080FF,
+    0px -2px 0 #0080FF,
+    -2px 0px 0 #0080FF,
+    2px 0px 0 #0080FF,
+    1px 2px 0 #0080FF,
+    -1px 2px 0 #0080FF,
+    1px -2px 0 #0080FF,
+    -1px -2px 0 #0080FF,
+    2px 1px 0 #0080FF,
+    -2px 1px 0 #0080FF,
+    2px -1px 0 #0080FF,
+    -2px -1px 0 #0080FF;
 }
 
 .section-lead {
@@ -51,6 +111,7 @@ section {
 footer {
     margin: 50px 0;
 }
+
 
 @media(max-width:768px) {
     section {
