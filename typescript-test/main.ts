@@ -1,3 +1,6 @@
+/// <reference path='./deck.ts'/>
+/// <reference path='./player.ts'/>
+/// <reference path='./ui.ts'/>
 
 // necessary includes: deck.ts player.ts
 // for interface activity include: ui.ts
@@ -9,4 +12,3 @@ var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');
 allPlayers.firstDeal(deck);
 allPlayers.printAll();
-

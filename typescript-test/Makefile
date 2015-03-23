@@ -9,7 +9,7 @@
 # of syntax changes, mostly the ability to do -o
 TypeScriptCompiler:= tsc
 output:= js/blackjack.js
-input:= deck.ts player.ts main.ts 
+input:= main.ts
 ui:= ui.ts
 
 all:
