@@ -38,6 +38,7 @@ var Card = (function () {
     };
     return Card;
 })();
+/// <reference path="./card.ts"/>
 var Deck = (function () {
     function Deck() {
         this.data = [];
@@ -62,11 +63,9 @@ var Deck = (function () {
     };
     return Deck;
 })();
-// This is a single player class, it shall hold all info
-// specific to that player
 var Player = (function () {
     function Player(s) {
-        this.hand = []; // and their hands, cool
+        this.hand = [];
         this.name = s;
         this.emptyHand();
     }
@@ -97,11 +96,9 @@ var Player = (function () {
     };
     return Player;
 })();
-// This container shall hold all current players and will
-// handle information for all of them
 var PlayerContainer = (function () {
     function PlayerContainer() {
-        this.data = []; // who's playing?
+        this.data = [];
         this.addPlayer('Dealer');
     }
     PlayerContainer.prototype.addPlayer = function (s) {
@@ -124,14 +121,6 @@ var PlayerContainer = (function () {
     };
     return PlayerContainer;
 })();
-// necessary includes: deck.ts player.ts
-// for interface activity include: ui.ts
-var deck = new Deck();
-var allPlayers = new PlayerContainer();
-// basic starting case
-allPlayers.addPlayer('user');
-allPlayers.firstDeal(deck);
-allPlayers.printAll();
 function activate(element) {
     element.className = "btn active";
 }
@@ -144,13 +133,11 @@ function updateUI() {
     dealercards.innerHTML = "";
     allPlayers.getPlayer(0).hand.forEach(function (c) {
         dealercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
-        //dealercards.innerHTML += "<p>" + c.val() + " of " + c.suit + "</p>";
     });
     document.getElementById('userscore').innerHTML = "User has: " + allPlayers.getPlayer(1).score().toString();
     var usercards = document.getElementById('usercards');
     usercards.innerHTML = "";
     allPlayers.getPlayer(1).hand.forEach(function (c) {
-        //usercards.innerHTML += "<p>" + c.val() + " of " + c.suit + "</p>";
         usercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
     });
 }
@@ -168,9 +155,6 @@ function stayThere() {
         endGame();
     }
 }
-// while this function isn't necessarily part of ui,
-// it relies on ui functions and shouldn't be included
-// in the build if I'm not testing ui
 function newgame() {
     deck = new Deck();
     allPlayers = new PlayerContainer();
@@ -202,12 +186,18 @@ function endGame() {
     }
     document.getElementById("output").innerHTML = "<p>" + outputtext + "</p><button class='btn active' onclick='newgame()'>New Game?</button>";
 }
-// button work
 var hitButton = document.getElementById('hitButton');
 activate(hitButton);
 hitButton.onclick = hitThat;
 var stayButton = document.getElementById('stayButton');
 activate(stayButton);
 stayButton.onclick = stayThere;
-// first run ui
 updateUI();
+/// <reference path='./deck.ts'/>
+/// <reference path='./player.ts'/>
+/// <reference path='./ui.ts'/>
+var deck = new Deck();
+var allPlayers = new PlayerContainer();
+allPlayers.addPlayer('user');
+allPlayers.firstDeal(deck);
+allPlayers.printAll();

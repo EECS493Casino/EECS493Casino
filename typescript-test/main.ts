@@ -2,9 +2,6 @@
 /// <reference path='./player.ts'/>
 /// <reference path='./ui.ts'/>
 
-// necessary includes: deck.ts player.ts
-// for interface activity include: ui.ts
-
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 
