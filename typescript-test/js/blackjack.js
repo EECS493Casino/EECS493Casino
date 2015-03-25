@@ -121,6 +121,14 @@ var PlayerContainer = (function () {
     };
     return PlayerContainer;
 })();
+/// <reference path='./deck.ts'/>
+/// <reference path='./player.ts'/>
+var deck = new Deck();
+var allPlayers = new PlayerContainer();
+allPlayers.addPlayer('user');
+allPlayers.firstDeal(deck);
+allPlayers.printAll();
+/// <reference path='./ui.ts'/>
 function activate(element) {
     element.className = "btn active";
 }
@@ -193,11 +201,3 @@ var stayButton = document.getElementById('stayButton');
 activate(stayButton);
 stayButton.onclick = stayThere;
 updateUI();
-/// <reference path='./deck.ts'/>
-/// <reference path='./player.ts'/>
-/// <reference path='./ui.ts'/>
-var deck = new Deck();
-var allPlayers = new PlayerContainer();
-allPlayers.addPlayer('user');
-allPlayers.firstDeal(deck);
-allPlayers.printAll();

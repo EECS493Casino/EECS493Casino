@@ -1,6 +1,5 @@
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
-/// <reference path='./ui.ts'/>
 
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
@@ -9,3 +8,6 @@ var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');
 allPlayers.firstDeal(deck);
 allPlayers.printAll();
+
+// The UI comes last as it actually uses the above code
+/// <reference path='./ui.ts'/>
