@@ -4,8 +4,23 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body {
-    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+/*body {
+    margin-top: 50px;  Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. 
+    background-repeat= no-repeat;
+    background-attachment: fixed;
+
+    height: 100%;
+
+}*/
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+    
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .image-bg-fluid-height,
@@ -17,6 +32,7 @@ body {
     -o-background-size: cover;
 }
 
+
 .little{
     height: 40px;
     width:25px;
@@ -24,10 +40,13 @@ body {
 }
 
 .image-bg-fluid-height {
-	/*background: url("../images/aces.jpg") no-repeat center center scroll;*/
+	background: url("../images/casino_background.jpg") no-repeat center center scroll;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
     padding: 100px 0;
-    width: 100%;
-    height: 
+    min-width: 100%;
+    min-height: 100%; 
 }
 
 .image-bg-fixed-height {
@@ -51,7 +70,11 @@ td{
 
 .navbar{
     background-color: #00CC99;
+     text-transform: uppercase;
+     /*font: 15px Brittannic Bold; */
+       color: white;
 }
+
 
 
 .button-link{
@@ -63,6 +86,13 @@ h1{
     font: Monotype Corsiva, serif;
 }
 
+.main{
+/*    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #000;*/
+    background-color: rgba(255,255,255,.3);
+
+}
 
 section {
     padding: 75px 0;
@@ -111,6 +141,8 @@ section {
 footer {
     margin: 50px 0;
 }
+
+
 
 
 @media(max-width:768px) {
