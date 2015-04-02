@@ -14,11 +14,12 @@ class Player{
 	emptyHand(){ 			// you ain't got nothin'
 		this.hand = [];
 	}
+	// this prints to console
 	printHand(i: number){ 	// I want to know what you have in your hand
 		console.log(this.name + " has: " + this.score());
 		for (; i < this.hand.length; i++)
 			console.log(
-					this.hand[i].val() + 
+					this.hand[i].val() +
 					" of " +
 					this.hand[i].suit
 					);

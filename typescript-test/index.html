@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
   <style>
-  .draggable { width: 450px; height: 150px; padding: 0.5em; }
+  .draggable { width: 450px; height: 250px; padding: 0.5em; }
   </style>
   <script>
   $(function() {
@@ -16,12 +16,12 @@
   </script>
 </head>
 <body>
-		<p id="dealerscore">Dealer has: </p>
 		<div class="ui-widget-content draggable">
+    		<p id="dealerscore">Dealer has: </p>
 			<div id="dealercards"></div>
 		</div>
-		<p id="userscore">User has: </p>
 		<div class="ui-widget-content draggable">
+    		<p id="userscore">User has: </p>
 			<div id="usercards"></div>
 		</div>
 		<div id="buttonholder">
@@ -29,7 +29,7 @@
 			<button id="stayButton">stay</button>
 		</div>
 		<div id="output"></div>
-	
+
 		<script src="js/blackjack.js"></script>
 	</body>
 </html>

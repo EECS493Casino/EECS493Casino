@@ -127,7 +127,6 @@ var deck = new Deck();
 var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');
 allPlayers.firstDeal(deck);
-allPlayers.printAll();
 /// <reference path='./ui.ts'/>
 function activate(element) {
     element.className = "btn active";
@@ -152,7 +151,6 @@ function updateUI() {
 function hitThat() {
     if (hitButton.className == "btn active") {
         allPlayers.getPlayer(1).addCard(deck.deal());
-        allPlayers.getPlayer(1).printHand(0);
         updateUI();
         if (allPlayers.getPlayer(1).score() > 21)
             endGame();

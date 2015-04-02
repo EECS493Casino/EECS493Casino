@@ -10,6 +10,7 @@ class Deck {
 		}
 		this.shuffle();
 	}
+	// prints to console
 	printAll(){
 		this.data.forEach(function(c){
 			console.log(c.suit + " " + c.value);

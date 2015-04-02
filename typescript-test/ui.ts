@@ -32,7 +32,7 @@ function updateUI(){
 function hitThat(){
 	if (hitButton.className == "btn active"){
 		allPlayers.getPlayer(1).addCard(deck.deal());
-		allPlayers.getPlayer(1).printHand(0);
+		// allPlayers.getPlayer(1).printHand(0);
 		updateUI();
 		if (allPlayers.getPlayer(1).score() > 21) endGame();
 	}
