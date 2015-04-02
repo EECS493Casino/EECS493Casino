@@ -17,6 +17,7 @@ var Card = (function () {
         }
         this.suit = s;
         this.value = Math.floor(i % 13);
+        this.hidden = false;
     }
     Card.prototype.val = function () {
         if (this.value < 9)
@@ -35,6 +36,9 @@ var Card = (function () {
     };
     Card.prototype.valNum = function () {
         return (this.value < 9) ? this.value + 2 : 10;
+    };
+    Card.prototype.setHidden = function (b) {
+        this.hidden = b;
     };
     return Card;
 })();
@@ -72,6 +76,10 @@ var Player = (function () {
     Player.prototype.addCard = function (c) {
         this.hand.push(c);
     };
+    Player.prototype.addHiddenCard = function (c) {
+        c.setHidden(true);
+        this.hand.push(c);
+    };
     Player.prototype.emptyHand = function () {
         this.hand = [];
     };
@@ -80,11 +88,18 @@ var Player = (function () {
         for (; i < this.hand.length; i++)
             console.log(this.hand[i].val() + " of " + this.hand[i].suit);
     };
+    Player.prototype.revealAllCards = function () {
+        this.hand.forEach(function (c) {
+            c.setHidden(false);
+        });
+    };
     Player.prototype.score = function () {
         var output = 0;
         var numAces = 0;
         this.hand.forEach(function (c) {
-            if (c.val() == "Ace")
+            if (c.hidden)
+                output += 0;
+            else if (c.val() == "Ace")
                 numAces++;
             else
                 output += c.valNum();
@@ -113,6 +128,7 @@ var PlayerContainer = (function () {
             this.data[i].addCard(d.deal());
         }
         this.data[0].addCard(d.deal());
+        this.data[0].addHiddenCard(d.deal());
     };
     PlayerContainer.prototype.printAll = function () {
         this.data.forEach(function (p) {
@@ -139,13 +155,20 @@ function updateUI() {
     var dealercards = document.getElementById('dealercards');
     dealercards.innerHTML = "";
     allPlayers.getPlayer(0).hand.forEach(function (c) {
-        dealercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
+        if (!c.hidden)
+            dealercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
+        else
+            dealercards.innerHTML += "<img src=\"images/blank.png\" " + "width=\"130\" height=\"150\">";
     });
     document.getElementById('userscore').innerHTML = "User has: " + allPlayers.getPlayer(1).score().toString();
     var usercards = document.getElementById('usercards');
     usercards.innerHTML = "";
     allPlayers.getPlayer(1).hand.forEach(function (c) {
-        usercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
+        if (!c.hidden)
+            usercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
+        else
+            usercards.innerHTML += "<img src=\"images/blank.png\" ";
+        "width=\"130\" height=\"150\">";
     });
 }
 function hitThat() {
@@ -174,6 +197,8 @@ function newgame() {
 function endGame() {
     deactivate(hitButton);
     deactivate(stayButton);
+    allPlayers.getPlayer(0).revealAllCards();
+    updateUI();
     var outputtext = "";
     if (allPlayers.getPlayer(1).score() > 21)
         outputtext = "you bust";

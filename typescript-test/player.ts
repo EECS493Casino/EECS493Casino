@@ -11,6 +11,10 @@ class Player{
 	addCard(c: Card){ 		// you deserve to receive a card
 		this.hand.push(c);
 	}
+	addHiddenCard(c: Card){
+		c.setHidden(true);
+		this.hand.push(c);
+	}
 	emptyHand(){ 			// you ain't got nothin'
 		this.hand = [];
 	}
@@ -24,11 +28,17 @@ class Player{
 					this.hand[i].suit
 					);
 	}
+	revealAllCards(){
+		this.hand.forEach(function(c: Card){
+			c.setHidden(false);
+		});
+	}
 	score(): number{ 		// Let's tally that score for you
 		var output: number = 0;
 		var numAces: number = 0;
 		this.hand.forEach(function(c: Card){
-			if (c.val() == "Ace") numAces++;
+			if (c.hidden) output += 0;
+			else if (c.val() == "Ace") numAces++;
 			else output += c.valNum();
 		});
 		for (;numAces > 0; numAces--){
@@ -57,6 +67,7 @@ class PlayerContainer{
 			this.data[i].addCard(d.deal());
 		}
 		this.data[0].addCard(d.deal());
+		this.data[0].addHiddenCard(d.deal());
 	}
 	printAll(){
 		this.data.forEach(function(p){

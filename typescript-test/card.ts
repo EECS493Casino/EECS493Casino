@@ -2,6 +2,7 @@
 class Card {
 	suit: string;
 	value: number;
+	hidden: boolean;
 	constructor(i: number){
 		var s = "null";
 		switch (Math.floor(i / 13)){
@@ -16,6 +17,7 @@ class Card {
 		}
 		this.suit = s;
 		this.value = Math.floor(i % 13);
+		this.hidden = false;
 	}
 	val(): string{
 		if (this.value < 9)
@@ -34,5 +36,8 @@ class Card {
 	}
 	valNum(): number{
 		return (this.value < 9) ? this.value + 2 : 10;
+	}
+	setHidden(b: boolean){
+		this.hidden = b;
 	}
 }

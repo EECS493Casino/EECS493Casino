@@ -12,20 +12,28 @@ function updateUI(){
 	var dealercards: HTMLElement = document.getElementById('dealercards');
 	dealercards.innerHTML = "";
 	allPlayers.getPlayer(0).hand.forEach(function(c){
-		dealercards.innerHTML += "<img src=\"images/" +
-								 c.val().toString().toLowerCase() +
-								 "_of_" + c.suit.toLowerCase() +
-								 ".png\" width=\"130\" height=\"150\">";
+		if (!c.hidden)
+			dealercards.innerHTML += "<img src=\"images/" +
+									 c.val().toString().toLowerCase() +
+									 "_of_" + c.suit.toLowerCase() +
+									 ".png\" width=\"130\" height=\"150\">";
+		else
+			dealercards.innerHTML += "<img src=\"images/blank.png\" " +
+									"width=\"130\" height=\"150\">";
 	});
 	document.getElementById('userscore').innerHTML =
 		"User has: " + allPlayers.getPlayer(1).score().toString();
 	var usercards: HTMLElement = document.getElementById('usercards');
 	usercards.innerHTML = "";
 	allPlayers.getPlayer(1).hand.forEach(function(c){
-		usercards.innerHTML += "<img src=\"images/" +
-								c.val().toString().toLowerCase() +
-								"_of_" + c.suit.toLowerCase() +
-								".png\" width=\"130\" height=\"150\">";
+		if (!c.hidden)
+			usercards.innerHTML += "<img src=\"images/" +
+									c.val().toString().toLowerCase() +
+									"_of_" + c.suit.toLowerCase() +
+									".png\" width=\"130\" height=\"150\">";
+		else
+			usercards.innerHTML += "<img src=\"images/blank.png\" "
+									"width=\"130\" height=\"150\">";
 	});
 }
 
@@ -59,6 +67,8 @@ function newgame(){ // should only be called by the new game button
 function endGame(){
 	deactivate(hitButton);
 	deactivate(stayButton);
+	allPlayers.getPlayer(0).revealAllCards();
+	updateUI();
 	var outputtext: string = "";
 	if (allPlayers.getPlayer(1).score() > 21)
 		outputtext = "you bust";
