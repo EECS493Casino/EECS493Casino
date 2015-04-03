@@ -67,6 +67,18 @@ var Deck = (function () {
     };
     return Deck;
 })();
+var gameSettings = (function () {
+    function gameSettings(cheats) {
+        this.cheatsOn = cheats;
+    }
+    gameSettings.prototype.setCheats = function (cheats) {
+        this.cheatsOn = cheats;
+    };
+    gameSettings.prototype.getCheats = function () {
+        return this.cheatsOn;
+    };
+    return gameSettings;
+})();
 var Player = (function () {
     function Player(s) {
         this.hand = [];
@@ -139,6 +151,8 @@ var PlayerContainer = (function () {
 })();
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
+/// <reference path="gameSettings.ts"/>
+var settings = new gameSettings(false);
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');

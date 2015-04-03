@@ -16,6 +16,7 @@
     "files": [
         "./card.ts",
         "./deck.ts",
+        "./gameSettings.ts",
         "./main.ts",
         "./player.ts",
         "./ui.ts"

@@ -1,6 +1,8 @@
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
+/// <reference path="gameSettings.ts"/>
 
+var settings = new gameSettings(false);
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 
