@@ -1,11 +1,16 @@
+
 class gameSettings{
     cheatsOn: boolean;
-    cheatToggleButton: JQuery;
-    constructor(cheats: boolean, cheatButon: JQuery){
+    cheatToggleButton: HTMLElement;
+    constructor(cheats: boolean, cheatButonId: string){
         this.cheatsOn = cheats;
-        this.cheatToggleButton = cheatButon;
-        this.cheatToggleButton.click(function(){
+        this.cheatToggleButton = document.getElementById(cheatButonId);
+        this.cheatToggleButton.addEventListener('click', (event): void =>{
             this.cheatsOn = !this.cheatsOn;
+            if (this.cheatsOn)
+                this.cheatToggleButton.innerHTML = "Cheats: ON";
+            else
+                this.cheatToggleButton.innerHTML = "Cheats: OFF";
         });
     }
 }
