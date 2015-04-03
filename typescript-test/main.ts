@@ -1,8 +1,9 @@
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
-/// <reference path="gameSettings.ts"/>
+/// <reference path="./gameSettings.ts"/>
+/// <reference path="./jquery.d.ts"/>
 
-var settings = new gameSettings(false);
+var settings = new gameSettings(false, $('#cheatToggle'));
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 

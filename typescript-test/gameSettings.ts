@@ -1,13 +1,11 @@
 class gameSettings{
     cheatsOn: boolean;
-    cheatToggleButton: HTMLElement;
-    constructor(cheats: boolean){
+    cheatToggleButton: JQuery;
+    constructor(cheats: boolean, cheatButon: JQuery){
         this.cheatsOn = cheats;
-    }
-    setCheats(cheats: boolean){
-        this.cheatsOn = cheats;
-    }
-    getCheats(): boolean{
-        return this.cheatsOn;
+        this.cheatToggleButton = cheatButon;
+        this.cheatToggleButton.click(function(){
+            this.cheatsOn = !this.cheatsOn;
+        });
     }
 }

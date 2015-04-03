@@ -17,6 +17,7 @@
         "./card.ts",
         "./deck.ts",
         "./gameSettings.ts",
+        "./jquery.d.ts",
         "./main.ts",
         "./player.ts",
         "./ui.ts"

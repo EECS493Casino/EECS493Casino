@@ -68,15 +68,13 @@ var Deck = (function () {
     return Deck;
 })();
 var gameSettings = (function () {
-    function gameSettings(cheats) {
+    function gameSettings(cheats, cheatButon) {
         this.cheatsOn = cheats;
+        this.cheatToggleButton = cheatButon;
+        this.cheatToggleButton.click(function () {
+            this.cheatsOn = !this.cheatsOn;
+        });
     }
-    gameSettings.prototype.setCheats = function (cheats) {
-        this.cheatsOn = cheats;
-    };
-    gameSettings.prototype.getCheats = function () {
-        return this.cheatsOn;
-    };
     return gameSettings;
 })();
 var Player = (function () {
@@ -151,8 +149,9 @@ var PlayerContainer = (function () {
 })();
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
-/// <reference path="gameSettings.ts"/>
-var settings = new gameSettings(false);
+/// <reference path="./gameSettings.ts"/>
+/// <reference path="./jquery.d.ts"/>
+var settings = new gameSettings(false, $('#cheatToggle'));
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');
