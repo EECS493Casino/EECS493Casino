@@ -14,10 +14,25 @@ var cheats = function() {
 	if(x == true)
 	{
 		//cheats on 
+		window.alert("cheats on");
 	}	
 	else
 	{
 		//cheats off 
 	}	
     
+}
+
+var level = function(input){
+
+	var lvl = input.value;
+	
+	if(input.value == "hard")
+	{
+		window.alert(input.value);
+	}	
+	else{
+
+	}
+
 }
