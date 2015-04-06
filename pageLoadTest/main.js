@@ -2,7 +2,7 @@ $(function(){
 	$(".button_link").click(function(){
 		$loc = $(this).attr("id") + ".html";
 		window.alert($loc);
-		$("#gamecontent").load($loc);
+		$("#content").load($loc);
 	});
 });
 
