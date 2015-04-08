@@ -1,9 +1,12 @@
-$(function(){
-	$(".button_link").click(function(){
-		$loc = $(this).attr("id") + ".html";
-		window.alert($loc);
-		$("#content").load($loc);
-	});
+
+$(document).ready(function(){
+	if($(".button_link")) {
+		$(".button_link").click(function(){
+			$loc = $(this).attr("id") + ".html";
+			//window.alert($loc);
+			$("#content").load($loc);
+		});
+	}
 });
 
 

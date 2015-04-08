@@ -1,8 +1,8 @@
-[website](eecs493casino.github.io)
+[website](http://eecs493casino.github.io)
 ==================
-[Page Load Test](eecs493casino.github.io/pageLoadTest/)
+[Page Load Test](http://eecs493casino.github.io/pageLoadTest/)
 ==================
-[TypeScript Test](eecs493casino.github.io/typescript-test)
+[TypeScript Test](http://eecs493casino.github.io/typescript-test)
 ==================
 
 

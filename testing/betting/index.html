@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blackjack Game</title>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        .draggable { width: 450px; height: 250px; padding: 0.5em; }
+    </style>
+    <script>
+	var playerFunds = 1000, currentBet = 100;
+    $(function() {
+        $( ".draggable" ).draggable();
+    });
+    $(document).ready(function() {
+        
+        $(function() {
+            $( "#bettingSlider" ).slider({
+            	value: 0.10 * playerFunds,
+            	min: 1,
+            	max: playerFunds,
+            	slide: function(event, ui) {
+            		$("#currentBet").html("$" + ui.value);
+            	}
+            });
+         });
+    });
+    function beginGame() {
+    	$("#beginGameButton").hide();
+    	$("#cardTableWrapper").show();
+    	newgame();
+
+    }
+    </script>
+</head>
+<body>
+	<div id="cardTableWrapper" style="display:none;">
+		<div class="ui-widget-content draggable">
+			<p id="dealerscore">Dealer has: </p>
+			<div id="dealercards"></div>
+		</div>
+		<div class="ui-widget-content draggable">
+			<p id="userscore">User has: </p>
+			<div id="usercards"></div>
+		</div>
+		<div id="buttonholder">
+			<button id="hitButton">Hit</button>
+			<button id="stayButton">stay</button>
+			<button id="cheatToggle">Cheats: OFF</button>
+		</div>
+	</div>
+	<div id="begin"></div>
+		<button class='btn active' id ="beginGameButton" onclick='beginGame()'>Begin Game</button>
+	<div id ="bettingWrapper">
+		<div id="bettingInfo">
+			<span class="bettingLabel">Total: </span><span id="totalFunds">$1000</span>
+			<span class="bettingLabel">Current Bet:</span><span id="currentBet">$100</span>
+		</div>
+		<div id="bettingSlider">
+		</div>
+	</div>
+	<div id="output"></div>
+
+	<script src="js/blackjack.js"></script>
+</body>
+</html>
