@@ -13,4 +13,5 @@ allPlayers.firstDeal(deck);
 //allPlayers.printAll();
 
 // The UI comes last as it actually uses the above code
-/// <reference path='./ui.ts'/>
+/// <reference path="./BlackJack.ts"/>
+var game = new BlackJack();

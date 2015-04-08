@@ -6,10 +6,10 @@ input:= main.ts
 ui:= ui.ts
 
 all:
-	$(TypeScriptCompiler) $(input) $(ui) --out $(output)
+	$(TypeScriptCompiler) $(input) --out $(output)
 
 no-ui:
-	$(TypeScriptCompiler) $(input) --out $(output)
+	$(TypeScriptCompiler) $(input) $(ui) --out $(output)
 
 run:
 	nodejs $(output)
