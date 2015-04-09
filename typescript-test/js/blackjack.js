@@ -1,15 +1,14 @@
 var BlackJack = (function () {
     function BlackJack() {
-        var _this = this;
         this.hitButton = document.getElementById('hitButton');
         this.activate(this.hitButton);
         this.hitButton.addEventListener('click', function (event) {
-            _this.hitThat();
+            this.hitThat();
         });
         this.stayButton = document.getElementById('stayButton');
         this.activate(this.stayButton);
         this.stayButton.addEventListener('click', function (event) {
-            _this.stayThere();
+            this.stayThere();
         });
         this.updateUI();
     }
@@ -19,26 +18,17 @@ var BlackJack = (function () {
     BlackJack.prototype.deactivate = function (element) {
         element.className = "btn disabled";
     };
+    BlackJack.prototype.drawCard = function (c) {
+    };
     BlackJack.prototype.updateUI = function () {
         document.getElementById('dealerscore').innerHTML = "Dealer has: " + allPlayers.getPlayer(0).score().toString();
         this.dealercards = document.getElementById('dealercards');
         this.dealercards.innerHTML = "";
-        allPlayers.getPlayer(0).hand.forEach(function (c) {
-            if (!c.hidden)
-                this.dealercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
-            else
-                this.dealercards.innerHTML += "<img src=\"images/blank.png\" " + "width=\"130\" height=\"150\">";
-        });
+        allPlayers.getPlayer(0).draw(this.dealercards);
         document.getElementById('userscore').innerHTML = "User has: " + allPlayers.getPlayer(1).score().toString();
         this.usercards = document.getElementById('usercards');
         this.usercards.innerHTML = "";
-        allPlayers.getPlayer(1).hand.forEach(function (c) {
-            if (!c.hidden)
-                this.usercards.innerHTML += "<img src=\"images/" + c.val().toString().toLowerCase() + "_of_" + c.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
-            else
-                this.usercards.innerHTML += "<img src=\"images/blank.png\" ";
-            "width=\"130\" height=\"150\">";
-        });
+        allPlayers.getPlayer(1).draw(this.usercards);
     };
     BlackJack.prototype.hitThat = function () {
         if (this.hitButton.className == "btn active") {
@@ -64,7 +54,6 @@ var BlackJack = (function () {
         document.getElementById('output').innerHTML = "";
     };
     BlackJack.prototype.endGame = function () {
-        var _this = this;
         this.deactivate(this.hitButton);
         this.deactivate(this.stayButton);
         allPlayers.getPlayer(0).revealAllCards();
@@ -88,7 +77,7 @@ var BlackJack = (function () {
         document.getElementById("output").innerHTML = "<p>" + outputtext + "</p><button id='newGame' class='btn active'>New Game?</button>";
         this.newGameButton = document.getElementById('newGame');
         this.newGameButton.addEventListener('click', function (event) {
-            _this.newGame();
+            this.newGame();
         });
     };
     return BlackJack;
@@ -135,6 +124,15 @@ var Card = (function () {
     Card.prototype.setHidden = function (b) {
         this.hidden = b;
     };
+    Card.prototype.draw = function (el) {
+        if (!this.hidden)
+            el.innerHTML += "<img src=\"images/" + this.val().toString().toLowerCase() + "_of_" + this.suit.toLowerCase() + ".png\" width=\"130\" height=\"150\">";
+        else {
+            el.innerHTML += "<img id=\"" + this.val() + this.suit + "\" src=\"images/blank.png\" " + "width=\"130\" height=\"150\">";
+            document.getElementById(this.val() + this.suit).addEventListener('mouseover', function (event) {
+            });
+        }
+    };
     return Card;
 })();
 /// <reference path="./card.ts"/>
@@ -164,15 +162,14 @@ var Deck = (function () {
 })();
 var gameSettings = (function () {
     function gameSettings(cheats, cheatButonId) {
-        var _this = this;
         this.cheatsOn = cheats;
         this.cheatToggleButton = document.getElementById(cheatButonId);
         this.cheatToggleButton.addEventListener('click', function (event) {
-            _this.cheatsOn = !_this.cheatsOn;
-            if (_this.cheatsOn)
-                _this.cheatToggleButton.innerHTML = "Cheats: ON";
+            this.cheatsOn = !this.cheatsOn;
+            if (this.cheatsOn)
+                this.cheatToggleButton.innerHTML = "Cheats: ON";
             else
-                _this.cheatToggleButton.innerHTML = "Cheats: OFF";
+                this.cheatToggleButton.innerHTML = "Cheats: OFF";
         });
     }
     return gameSettings;
@@ -189,6 +186,11 @@ var Player = (function () {
     Player.prototype.addHiddenCard = function (c) {
         c.setHidden(true);
         this.hand.push(c);
+    };
+    Player.prototype.draw = function (el) {
+        this.hand.forEach(function (c) {
+            c.draw(el);
+        });
     };
     Player.prototype.emptyHand = function () {
         this.hand = [];

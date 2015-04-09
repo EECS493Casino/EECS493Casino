@@ -40,4 +40,19 @@ class Card {
 	setHidden(b: boolean){
 		this.hidden = b;
 	}
+	draw(el: HTMLElement){
+		if (!this.hidden)
+			el.innerHTML +="<img src=\"images/" +
+						 this.val().toString().toLowerCase() +
+						 "_of_" + this.suit.toLowerCase() +
+						 ".png\" width=\"130\" height=\"150\">";
+		else{
+			el.innerHTML += "<img id=\"" + this.val() + this.suit +
+							"\" src=\"images/blank.png\" " +
+							"width=\"130\" height=\"150\">";
+			document.getElementById(this.val() + this.suit).addEventListener('mouseover', (event): void=>{
+				
+			});
+		}
+	}
 }

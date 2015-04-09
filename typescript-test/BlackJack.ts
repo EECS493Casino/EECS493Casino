@@ -26,35 +26,20 @@ class BlackJack{
 	deactivate(element: HTMLElement){
 		element.className = "btn disabled";
 	}
+	drawCard(c: Card){
+
+	}
 	updateUI(){
 		document.getElementById('dealerscore').innerHTML =
 			"Dealer has: " + allPlayers.getPlayer(0).score().toString();
 		this.dealercards = document.getElementById('dealercards');
 		this.dealercards.innerHTML = "";
-		allPlayers.getPlayer(0).hand.forEach(function(c){
-			if (!c.hidden)
-				this.dealercards.innerHTML += "<img src=\"images/" +
-										 c.val().toString().toLowerCase() +
-										 "_of_" + c.suit.toLowerCase() +
-										 ".png\" width=\"130\" height=\"150\">";
-			else
-				this.dealercards.innerHTML += "<img src=\"images/blank.png\" " +
-										"width=\"130\" height=\"150\">";
-		});
+		allPlayers.getPlayer(0).draw(this.dealercards);
 		document.getElementById('userscore').innerHTML =
 			"User has: " + allPlayers.getPlayer(1).score().toString();
 		this.usercards = document.getElementById('usercards');
 		this.usercards.innerHTML = "";
-		allPlayers.getPlayer(1).hand.forEach(function(c){
-			if (!c.hidden)
-				this.usercards.innerHTML += "<img src=\"images/" +
-										c.val().toString().toLowerCase() +
-										"_of_" + c.suit.toLowerCase() +
-										".png\" width=\"130\" height=\"150\">";
-			else
-				this.usercards.innerHTML += "<img src=\"images/blank.png\" "
-										"width=\"130\" height=\"150\">";
-		});
+		allPlayers.getPlayer(1).draw(this.usercards);
 	}
 	hitThat(){
 		if (this.hitButton.className == "btn active"){

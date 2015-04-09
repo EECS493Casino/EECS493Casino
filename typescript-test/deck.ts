@@ -16,7 +16,6 @@ class Deck {
 			console.log(c.suit + " " + c.value);
 		});
 	}
-
 	shuffle(){ // conveniently from StackOverflow
 		for(var j, x, i = this.data.length;
 			i;

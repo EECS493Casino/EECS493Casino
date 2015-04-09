@@ -15,6 +15,11 @@ class Player{
 		c.setHidden(true);
 		this.hand.push(c);
 	}
+	draw(el: HTMLElement){
+		this.hand.forEach((c: Card): void=>{
+			c.draw(el);
+		});
+	}
 	emptyHand(){ 			// you ain't got nothin'
 		this.hand = [];
 	}
