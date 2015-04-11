@@ -29,4 +29,7 @@ class Deck {
 	deal(): Card{
 		return this.data[this.currentCard++];
 	}
+	topCard(): Card{
+		return this.data[this.currentCard+1];
+	}
 }

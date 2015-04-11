@@ -4,6 +4,7 @@ class BlackJack{
 	stayButton: HTMLElement;
 	dealercards: HTMLElement;
 	usercards: HTMLElement;
+	deckHolder: HTMLElement;
 	newGameButton: HTMLElement;
 
 	constructor(){
@@ -37,6 +38,10 @@ class BlackJack{
 		this.usercards = document.getElementById('usercards');
 		this.usercards.innerHTML = "";
 		allPlayers.getPlayer(1).draw(this.usercards);
+		this.deckHolder = document.getElementById('DeckHolder');
+		this.deckHolder.innerHTML = "";
+		deck.topCard().setHidden(true);
+		deck.topCard().draw(this.deckHolder);
 	}
 	hitThat(){
 		if (this.hitButton.className == "btn active"){
