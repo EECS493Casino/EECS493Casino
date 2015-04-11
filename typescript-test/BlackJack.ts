@@ -26,9 +26,6 @@ class BlackJack{
 	deactivate(element: HTMLElement){
 		element.className = "btn disabled";
 	}
-	drawCard(c: Card){
-
-	}
 	updateUI(){
 		document.getElementById('dealerscore').innerHTML =
 			"Dealer has: " + allPlayers.getPlayer(0).score().toString();

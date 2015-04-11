@@ -19,8 +19,6 @@ var BlackJack = (function () {
     BlackJack.prototype.deactivate = function (element) {
         element.className = "btn disabled";
     };
-    BlackJack.prototype.drawCard = function (c) {
-    };
     BlackJack.prototype.updateUI = function () {
         document.getElementById('dealerscore').innerHTML = "Dealer has: " + allPlayers.getPlayer(0).score().toString();
         this.dealercards = document.getElementById('dealercards');

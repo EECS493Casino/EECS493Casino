@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>Blackjack Game</title>
-    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css" />
+    <script src="js/jquery-ui.min.js"></script>
     <style>
         .draggable { width: 450px; height: 250px; padding: 0.5em; }
     </style>
@@ -16,9 +16,12 @@
     </script>
 </head>
 <body>
-    <div>
+	<div id="output"></div>
+	<div id="buttonholder">
         <button id="cheatToggle">Cheats: OFF</button>
-    </div>
+		<button id="hitButton">Hit</button>
+		<button id="stayButton">stay</button>
+	</div>
 	<div class="ui-widget-content draggable">
 		<p id="dealerscore">Dealer has: </p>
 		<div id="dealercards"></div>
@@ -27,11 +30,6 @@
 		<p id="userscore">User has: </p>
 		<div id="usercards"></div>
 	</div>
-	<div id="buttonholder">
-		<button id="hitButton">Hit</button>
-		<button id="stayButton">stay</button>
-	</div>
-	<div id="output"></div>
 
 	<script src="js/blackjack.js"></script>
 </body>
