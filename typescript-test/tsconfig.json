@@ -14,7 +14,7 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./BlackJack.ts",
+        "./blackjack.ts",
         "./card.ts",
         "./deck.ts",
         "./gameSettings.ts",

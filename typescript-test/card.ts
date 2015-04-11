@@ -50,8 +50,15 @@ class Card {
 			el.innerHTML += "<img id=\"" + this.val() + this.suit +
 							"\" src=\"images/blank.png\" " +
 							"width=\"130\" height=\"150\">";
-			document.getElementById(this.val() + this.suit).addEventListener('mouseover', (event): void=>{
-				
+			var hiddenEl = document.getElementById(this.val() + this.suit);
+			hiddenEl.addEventListener('mouseover', (event): void=>{
+				if (settings.cheatsOn)
+					hiddenEl.setAttribute('src', "images/" +
+							 this.val().toString().toLowerCase() +
+							 "_of_" + this.suit.toLowerCase() + ".png");
+			});
+			hiddenEl.addEventListener('mouseout', (event): void=>{
+				hiddenEl.setAttribute('src', "images/blank.png");
 			});
 		}
 	}
