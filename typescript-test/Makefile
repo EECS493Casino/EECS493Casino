@@ -8,8 +8,3 @@ ui:= ui.ts
 all:
 	$(TypeScriptCompiler) $(input) --out $(output)
 
-no-ui:
-	$(TypeScriptCompiler) $(input) $(ui) --out $(output)
-
-run:
-	nodejs $(output)

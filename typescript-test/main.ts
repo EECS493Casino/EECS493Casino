@@ -2,6 +2,7 @@
 /// <reference path='./player.ts'/>
 /// <reference path="./gameSettings.ts"/>
 /// <reference path="./jquery.d.ts"/>
+/// <reference path="./blackjack.ts"/>
 
 var settings = new gameSettings(false, 'cheatToggle');
 var deck = new Deck();
@@ -13,5 +14,4 @@ allPlayers.firstDeal(deck);
 //allPlayers.printAll();
 
 // The UI comes last as it actually uses the above code
-/// <reference path="./BlackJack.ts"/>
 var game = new BlackJack();
