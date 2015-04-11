@@ -1,0 +1,194 @@
+/*!
+ * Start Bootstrap - Full Width Pics HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*body {
+    margin-top: 50px;  Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. 
+    background-repeat= no-repeat;
+    background-attachment: fixed;
+
+    height: 100%;
+
+}*/
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+    
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.image-bg-fluid-height,
+.image-bg-fixed-height {
+    text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+.little{
+    height: 40px;
+    width:25px;
+    padding-top: 3px; 
+}
+
+.image-bg-fluid-height {
+	background: url("../images/casino_background.jpg") no-repeat center center scroll;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    padding: 100px 0;
+    min-width: 100%;
+    min-height: 100%; 
+}
+
+.image-bg-fixed-height {
+	background: url("../images/aces.jpg") no-repeat center center scroll;
+    height: 450px;
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+
+td{
+    padding-bottom: 2%;
+    padding-left: 1%;
+}
+
+
+
+.table td {
+   text-align: center;   
+}
+
+.navbar{
+    background-color: #00CC99;
+     text-transform: uppercase;
+     /*font: 15px Brittannic Bold; */
+    color: white;
+    font: bold;
+}
+
+.navbar-brand{  
+    color: white;
+
+}
+
+.button-link{
+    margin-top: 5px;
+    padding-top: 5px;
+
+}
+
+a{
+    color:white;
+
+}
+
+
+div{
+    background-color: rgba(255,255,255,.8);
+
+}
+
+button{
+    background-color: #00CC99;
+    text-transform: uppercase;
+    font: bold;
+    color:white;
+    height: 60px;
+    width: 200px;
+}
+
+button:hover{
+     background-color: #66E0C2;
+
+}
+
+h1{
+    font: Monotype Corsiva, serif;
+}
+
+h3{
+    font: Monotype Corsiva, serif;
+    font-weight: bold;
+}
+
+section {
+    padding: 75px 0;
+
+}
+
+.section-heading {
+    margin: 30px 0;
+    font: 100px Segoe WP Black; 
+    color: black;
+    text-transform: uppercase;
+
+    /*font-size: 4em;*/
+    /*text-shadow: -1.5px 0 blue, 0 1.5px blue, 1.5px 0 blue, 0 -1.5px blue;*/
+    text-shadow: 1px 1px 0 #0080FF,
+    -1px 1px 0 #0080FF,
+    1px -1px 0 #0080FF,
+    -1px -1px 0 #0080FF,
+    0px 1px 0 #0080FF,
+    0px -1px 0 #0080FF,
+    -1px 0px 0 #0080FF,
+    1px 0px 0 #0080FF,
+    2px 2px 0 #0080FF,
+    -2px 2px 0 #0080FF,
+    2px -2px 0 #0080FF,
+    -2px -2px 0 #0080FF,
+    0px 2px 0 #0080FF,
+    0px -2px 0 #0080FF,
+    -2px 0px 0 #0080FF,
+    2px 0px 0 #0080FF,
+    1px 2px 0 #0080FF,
+    -1px 2px 0 #0080FF,
+    1px -2px 0 #0080FF,
+    -1px -2px 0 #0080FF,
+    2px 1px 0 #0080FF,
+    -2px 1px 0 #0080FF,
+    2px -1px 0 #0080FF,
+    -2px -1px 0 #0080FF;
+}
+
+.section-lead {
+    margin: 30px 0;
+}
+
+.section-paragraph {
+    margin: 30px 0;
+}
+
+footer{
+    margin: 50px 0;
+    font: Monotype Corsiva, serif;
+    color: white;
+   
+
+}
+
+
+
+
+@media(max-width:768px) {
+    section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .section-heading {
+        font-size: 2em;
+    }
+}
+
