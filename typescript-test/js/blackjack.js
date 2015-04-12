@@ -1,3 +1,97 @@
+var BlackJack = (function () {
+    function BlackJack() {
+        var _this = this;
+        this.hitButton = document.getElementById('hitButton');
+        this.activate(this.hitButton);
+        this.hitButton.addEventListener('click', function (event) {
+            _this.hitThat();
+        });
+        this.stayButton = document.getElementById('stayButton');
+        this.activate(this.stayButton);
+        this.stayButton.addEventListener('click', function (event) {
+            _this.stayThere();
+        });
+        this.updateUI();
+    }
+    BlackJack.prototype.activate = function (element) {
+        element.className = "btn active";
+    };
+    BlackJack.prototype.deactivate = function (element) {
+        element.className = "btn disabled";
+    };
+    BlackJack.prototype.updateUI = function () {
+        document.getElementById('dealerscore').innerHTML =
+            "Dealer has: " + allPlayers.getPlayer(0).score().toString();
+        this.dealercards = document.getElementById('dealercards');
+        this.dealercards.innerHTML = "";
+        allPlayers.getPlayer(0).draw(this.dealercards);
+        document.getElementById('userscore').innerHTML =
+            "User has: " + allPlayers.getPlayer(1).score().toString();
+        this.usercards = document.getElementById('usercards');
+        this.usercards.innerHTML = "";
+        allPlayers.getPlayer(1).draw(this.usercards);
+        this.deckHolder = document.getElementById('DeckHolder');
+        this.deckHolder.innerHTML = "";
+        deck.topCard().setHidden(true);
+        deck.topCard().draw(this.deckHolder);
+    };
+    BlackJack.prototype.hitThat = function () {
+        if (this.hitButton.className == "btn active") {
+            allPlayers.getPlayer(1).addCard(deck.deal());
+            this.updateUI();
+            if (allPlayers.getPlayer(1).score() > 21)
+                this.endGame();
+        }
+    };
+    BlackJack.prototype.stayThere = function () {
+        if (this.stayButton.className == "btn active") {
+            this.endGame();
+        }
+    };
+    BlackJack.prototype.newGame = function () {
+        deck = new Deck();
+        allPlayers = new PlayerContainer();
+        allPlayers.addPlayer('user');
+        allPlayers.firstDeal(deck);
+        this.updateUI();
+        this.activate(this.hitButton);
+        this.activate(this.stayButton);
+        document.getElementById('output').innerHTML = "";
+    };
+    BlackJack.prototype.endGame = function () {
+        var _this = this;
+        this.deactivate(this.hitButton);
+        this.deactivate(this.stayButton);
+        allPlayers.getPlayer(0).revealAllCards();
+        this.updateUI();
+        var outputtext = "";
+        if (allPlayers.getPlayer(1).score() > 21)
+            outputtext = "you bust";
+        else {
+            while (allPlayers.getPlayer(0).score() < 15 &&
+                allPlayers.getPlayer(0).score() <
+                    allPlayers.getPlayer(1).score())
+                allPlayers.getPlayer(0).addCard(deck.deal());
+            this.updateUI();
+            if (allPlayers.getPlayer(0).score() > 21)
+                outputtext = "dealer busts, you win";
+            else if (allPlayers.getPlayer(1).hand.length > 4)
+                outputtext = "My but what a large hand you have, you win.";
+            else if (allPlayers.getPlayer(0).score() >=
+                allPlayers.getPlayer(1).score())
+                outputtext = "dealer wins";
+            else
+                outputtext = "you win!";
+        }
+        document.getElementById("output").innerHTML =
+            "<p>" + outputtext + "</p><button id='newGame' class='btn active'>New Game?</button>";
+        this.newGameButton = document.getElementById('newGame');
+        this.newGameButton.addEventListener('click', function (event) {
+            _this.newGame();
+        });
+    };
+    return BlackJack;
+})();
 var Card = (function () {
     function Card(i) {
         var s = "null";
@@ -75,7 +169,6 @@ var Deck = (function () {
         }
         this.shuffle();
     }
-    // prints to console
     Deck.prototype.printAll = function () {
         this.data.forEach(function (c) {
             console.log(c.suit + " " + c.value);
@@ -97,11 +190,24 @@ var Deck = (function () {
     };
     return Deck;
 })();
-// This is a single player class, it shall hold all info
-// specific to that player
+var gameSettings = (function () {
+    function gameSettings(cheats, cheatButonId) {
+        var _this = this;
+        this.cheatsOn = cheats;
+        this.cheatToggleButton = document.getElementById(cheatButonId);
+        this.cheatToggleButton.addEventListener('click', function (event) {
+            _this.cheatsOn = !_this.cheatsOn;
+            if (_this.cheatsOn)
+                _this.cheatToggleButton.innerHTML = "Cheats: ON";
+            else
+                _this.cheatToggleButton.innerHTML = "Cheats: OFF";
+        });
+    }
+    return gameSettings;
+})();
 var Player = (function () {
     function Player(s) {
-        this.hand = []; // and their hands, cool
+        this.hand = [];
         this.name = s;
         this.emptyHand();
     }
@@ -120,7 +226,6 @@ var Player = (function () {
     Player.prototype.emptyHand = function () {
         this.hand = [];
     };
-    // this prints to console
     Player.prototype.printHand = function (i) {
         console.log(this.name + " has: " + this.score());
         for (; i < this.hand.length; i++)
@@ -151,11 +256,9 @@ var Player = (function () {
     };
     return Player;
 })();
-// This container shall hold all current players and will
-// handle information for all of them
 var PlayerContainer = (function () {
     function PlayerContainer() {
-        this.data = []; // who's playing?
+        this.data = [];
         this.addPlayer('Dealer');
     }
     PlayerContainer.prototype.addPlayer = function (s) {
@@ -179,118 +282,6 @@ var PlayerContainer = (function () {
     };
     return PlayerContainer;
 })();
-var gameSettings = (function () {
-    function gameSettings(cheats, cheatButonId) {
-        var _this = this;
-        this.cheatsOn = cheats;
-        this.cheatToggleButton = document.getElementById(cheatButonId);
-        this.cheatToggleButton.addEventListener('click', function (event) {
-            _this.cheatsOn = !_this.cheatsOn;
-            if (_this.cheatsOn)
-                _this.cheatToggleButton.innerHTML = "Cheats: ON";
-            else
-                _this.cheatToggleButton.innerHTML = "Cheats: OFF";
-        });
-    }
-    return gameSettings;
-})();
-//stuff
-var BlackJack = (function () {
-    function BlackJack() {
-        var _this = this;
-        this.hitButton = document.getElementById('hitButton');
-        // button work
-        this.activate(this.hitButton);
-        this.hitButton.addEventListener('click', function (event) {
-            _this.hitThat();
-        });
-        this.stayButton = document.getElementById('stayButton');
-        this.activate(this.stayButton);
-        this.stayButton.addEventListener('click', function (event) {
-            _this.stayThere();
-        });
-        this.updateUI();
-    }
-    BlackJack.prototype.activate = function (element) {
-        element.className = "btn active";
-    };
-    BlackJack.prototype.deactivate = function (element) {
-        element.className = "btn disabled";
-    };
-    BlackJack.prototype.updateUI = function () {
-        document.getElementById('dealerscore').innerHTML =
-            "Dealer has: " + allPlayers.getPlayer(0).score().toString();
-        this.dealercards = document.getElementById('dealercards');
-        this.dealercards.innerHTML = "";
-        allPlayers.getPlayer(0).draw(this.dealercards);
-        document.getElementById('userscore').innerHTML =
-            "User has: " + allPlayers.getPlayer(1).score().toString();
-        this.usercards = document.getElementById('usercards');
-        this.usercards.innerHTML = "";
-        allPlayers.getPlayer(1).draw(this.usercards);
-        this.deckHolder = document.getElementById('DeckHolder');
-        this.deckHolder.innerHTML = "";
-        deck.topCard().setHidden(true);
-        deck.topCard().draw(this.deckHolder);
-    };
-    BlackJack.prototype.hitThat = function () {
-        if (this.hitButton.className == "btn active") {
-            allPlayers.getPlayer(1).addCard(deck.deal());
-            // allPlayers.getPlayer(1).printHand(0);
-            this.updateUI();
-            if (allPlayers.getPlayer(1).score() > 21)
-                this.endGame();
-        }
-    };
-    BlackJack.prototype.stayThere = function () {
-        if (this.stayButton.className == "btn active") {
-            this.endGame();
-        }
-    };
-    BlackJack.prototype.newGame = function () {
-        deck = new Deck();
-        allPlayers = new PlayerContainer();
-        allPlayers.addPlayer('user');
-        allPlayers.firstDeal(deck);
-        this.updateUI();
-        this.activate(this.hitButton);
-        this.activate(this.stayButton);
-        document.getElementById('output').innerHTML = "";
-    };
-    BlackJack.prototype.endGame = function () {
-        var _this = this;
-        this.deactivate(this.hitButton);
-        this.deactivate(this.stayButton);
-        allPlayers.getPlayer(0).revealAllCards();
-        this.updateUI();
-        var outputtext = "";
-        if (allPlayers.getPlayer(1).score() > 21)
-            outputtext = "you bust";
-        else {
-            while (allPlayers.getPlayer(0).score() < 15 &&
-                allPlayers.getPlayer(0).score() <
-                    allPlayers.getPlayer(1).score())
-                allPlayers.getPlayer(0).addCard(deck.deal());
-            this.updateUI();
-            if (allPlayers.getPlayer(0).score() > 21)
-                outputtext = "dealer busts, you win";
-            else if (allPlayers.getPlayer(1).hand.length > 4)
-                outputtext = "My but what a large hand you have, you win.";
-            else if (allPlayers.getPlayer(0).score() >=
-                allPlayers.getPlayer(1).score())
-                outputtext = "dealer wins";
-            else
-                outputtext = "you win!";
-        }
-        document.getElementById("output").innerHTML =
-            "<p>" + outputtext + "</p><button id='newGame' class='btn active'>New Game?</button>";
-        this.newGameButton = document.getElementById('newGame');
-        this.newGameButton.addEventListener('click', function (event) {
-            _this.newGame();
-        });
-    };
-    return BlackJack;
-})();
 /// <reference path='./deck.ts'/>
 /// <reference path='./player.ts'/>
 /// <reference path="./gameSettings.ts"/>
@@ -299,9 +290,6 @@ var BlackJack = (function () {
 var settings = new gameSettings(false, 'cheatToggle');
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
-// basic starting case
 allPlayers.addPlayer('user');
 allPlayers.firstDeal(deck);
-//allPlayers.printAll();
-// The UI comes last as it actually uses the above code
 var game = new BlackJack();
