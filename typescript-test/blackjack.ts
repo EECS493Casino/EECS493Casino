@@ -45,7 +45,9 @@ class BlackJack{
 	}
 	hitThat(){
 		if (this.hitButton.className == "btn active"){
-			allPlayers.getPlayer(1).addCard(deck.deal());
+			var dealtCard: Card = deck.deal();
+			dealtCard.setHidden(false);
+			allPlayers.getPlayer(1).addCard(dealtCard);
 			// allPlayers.getPlayer(1).printHand(0);
 			this.updateUI();
 			if (allPlayers.getPlayer(1).score() > 21) this.endGame();
@@ -79,8 +81,11 @@ class BlackJack{
 		else{
 			while (allPlayers.getPlayer(0).score() < 15 &&
 					allPlayers.getPlayer(0).score() <
-					allPlayers.getPlayer(1).score())
-				allPlayers.getPlayer(0).addCard(deck.deal());
+					allPlayers.getPlayer(1).score()){
+				var dealtCard: Card = deck.deal();
+				dealtCard.setHidden(false);
+				allPlayers.getPlayer(0).addCard(dealtCard);
+			}
 			this.updateUI();
 			if (allPlayers.getPlayer(0).score() > 21)
 				outputtext = "dealer busts, you win";

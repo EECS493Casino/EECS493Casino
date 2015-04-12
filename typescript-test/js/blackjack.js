@@ -37,7 +37,9 @@ var BlackJack = (function () {
     };
     BlackJack.prototype.hitThat = function () {
         if (this.hitButton.className == "btn active") {
-            allPlayers.getPlayer(1).addCard(deck.deal());
+            var dealtCard = deck.deal();
+            dealtCard.setHidden(false);
+            allPlayers.getPlayer(1).addCard(dealtCard);
             this.updateUI();
             if (allPlayers.getPlayer(1).score() > 21)
                 this.endGame();
@@ -70,8 +72,11 @@ var BlackJack = (function () {
         else {
             while (allPlayers.getPlayer(0).score() < 15 &&
                 allPlayers.getPlayer(0).score() <
-                    allPlayers.getPlayer(1).score())
-                allPlayers.getPlayer(0).addCard(deck.deal());
+                    allPlayers.getPlayer(1).score()) {
+                var dealtCard = deck.deal();
+                dealtCard.setHidden(false);
+                allPlayers.getPlayer(0).addCard(dealtCard);
+            }
             this.updateUI();
             if (allPlayers.getPlayer(0).score() > 21)
                 outputtext = "dealer busts, you win";
@@ -186,7 +191,7 @@ var Deck = (function () {
         return this.data[this.currentCard++];
     };
     Deck.prototype.topCard = function () {
-        return this.data[this.currentCard + 1];
+        return this.data[this.currentCard];
     };
     return Deck;
 })();

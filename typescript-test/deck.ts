@@ -30,6 +30,6 @@ class Deck {
 		return this.data[this.currentCard++];
 	}
 	topCard(): Card{
-		return this.data[this.currentCard+1];
+		return this.data[this.currentCard];
 	}
 }
