@@ -94,6 +94,11 @@ a{
 
 }
 
+.screen{
+    height: 400px;
+    width: 650px;
+}
+
 
 div{
     background-color: rgba(255,255,255,.8);
