@@ -1,36 +1,60 @@
 
-body {
-  background-color: #339933;
-}
 
-#table_title {
-  font-size: 48px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-  color: #202c2d;
-  text-shadow: 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
-
-}
-
-#num_deck_wrapper {
-  padding: 0 0 15px 0;
-}
-
-#num_deck_label {
-  font-size: 14px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-}
-
-#dealer_title, #player_title {
-  font-size: 24px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-  color: #202c2d;
-  text-shadow: 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
-
-}
-
-.card {
-  height: 100px;
-  width: 69px;
+#usercards img, #dealercards img, #DeckHolder img {
+  height: 125px;
+  width: 86.25px;
   padding: 2px;
 }
 
+#buttonholder button {
+	width: 100px;
+	height: 50px;
+}
+ 
+#startGame {
+	height: 50px;
+} 
+
+.card-container {
+	width: 400px;
+	height: 200px;
+	padding: 20px;
+	margin: 10px;
+}
+
+#bankInfoContainer{
+	position: absolute;
+	top: 125px;
+}
+#bankRollBg {
+		background-color: #00CC99;
+	position: absolute;
+	left: 10px;
+	width: 150px;
+}
+
+#wagerBg {
+		background-color: #00CC99;
+	position: absolute;
+	left: 200px;
+		width: 150px;
+}
+
+.bankAmounts {
+
+}
+
+#sliderWrapper {
+	position: absolute;
+	top: 160px;
+	left:50%;
+    margin-left:-150px;
+	width: 300px;
+}
+
+.game-controls {
+	width: 400px;
+	height: 200px;
+	padding: 20px;
+	margin: 10px;
+}

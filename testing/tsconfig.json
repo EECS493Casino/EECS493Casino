@@ -1,0 +1,26 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "out": "js/blackjack.js",
+        "noLib": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./blackjack.ts",
+        "./card.ts",
+        "./deck.ts",
+        "./gameSettings.ts",
+        "./jquery.d.ts",
+        "./main.ts",
+        "./player.ts",
+        "./ui.ts"
+    ]
+}
