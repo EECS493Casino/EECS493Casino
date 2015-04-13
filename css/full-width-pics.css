@@ -92,6 +92,16 @@ td{
 a{
     color:white;
     font-size: 15px;
+   
+}
+
+a:hover{
+    font-style: bold;
+     /*color: #66E0C2;*/
+}
+
+.links{
+    font: 15px #66E0C2;
 }
 button{
     background-color: #00CC99;
@@ -248,5 +258,103 @@ footer{
     margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+
+
+.levelswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.levelswitch-checkbox {
+    display: none;
+}
+.levelswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.levelswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.levelswitch-inner:before, .levelswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.levelswitch-inner:before {
+    content: "EASY";
+    padding-left: -1px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.levelswitch-inner:after {
+    content: "HARD";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.levelswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.levelswitch-checkbox:checked + .levelswitch-label .levelswitch-inner {
+    margin-left: 0;
+}
+.levelswitch-checkbox:checked + .levelswitch-label .levelswitch-switch {
+    right: 0px; 
+}
+
+
+
+.musicswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.musicswitch-checkbox {
+    display: none;
+}
+.musicswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.musicswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.musicswitch-inner:before, .musicswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.musicswitch-inner:before{
+    content: "OFF";
+    padding-left: -1px;
+    background-color: #EEEEEE; color: #999999;
+}
+.musicswitch-inner:after {
+    content: "OFF";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.musicswitch-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.musicswitch-checkbox:checked + .musicswitch-label .musicswitch-inner {
+    margin-left: 0;
+}
+.musicswitch-checkbox:checked + .musicswitch-label .musicswitch-switch {
     right: 0px; 
 }

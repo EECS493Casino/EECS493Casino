@@ -101,12 +101,28 @@
 					</tr>
 					<tr> 
 						<td><h3>AI Level:</h3></td>  
-						<td>
-                        </br>
-						<label><input type="radio" name="ai" onclick="level(this)" value="easy"> Easy</label> 
-						<label><input type="radio" name="ai" onclick="level(this)" value="hard">Difficult</label> 
-						</td>  
+                        <td> </br><div class="levelswitch text-center">
+                        <div>
+                            <input type="checkbox" name="levelswitch" class="levelswitch-checkbox" onchange="level()"id="levelswitch" checked>
+                            <label class="levelswitch-label" for="levelswitch"> 
+                                <span class="levelswitch-inner"></span>
+                                <span class="levelswitch-switch"></span>
+                            </label>
+                        </div></div></td>
+					
 					</tr>
+                        <tr> 
+                        <td><h3>Music:</h3></td>  
+                        <td> </br><div class="musicswitch text-center">
+                        <div>
+                            <input type="checkbox" name="musicswitch" class="musicswitch-checkbox" onchange="music()"id="musicswitch" checked>
+                            <label class="musicswitch-label" for="musicswitch"> 
+                                <span class="musicswitch-inner"></span>
+                                <span class="musicswitch-switch"></span>
+                            </label>
+                        </div></div></td>
+                    
+                    </tr>
 				</table>	
 			</div>			    
 	    </div>
