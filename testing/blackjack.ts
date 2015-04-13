@@ -74,7 +74,6 @@ class BlackJack{
 		this.activate(this.hitButton);
 		this.activate(this.stayButton);
 		document.getElementById('output').innerHTML = "";
-		this.bank.bet();
 		this.bank.disable();
 	}
 	endGame(){
