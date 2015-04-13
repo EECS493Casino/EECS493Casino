@@ -91,15 +91,20 @@ td{
 
 a{
     color:white;
-
+    font-size: 15px;
 }
 button{
     background-color: #00CC99;
     text-transform: uppercase;
+    
+    height: 70px;
+    width: 350px;
+}
+
+.btn{
+    font-size: 28px;
     font: bold;
     color:white;
-    height: 60px;
-    width: 200px;
 }
 
 button:hover{
@@ -108,7 +113,7 @@ button:hover{
 }
 
 h1{
-    font: Monotype Corsiva, serif;
+    /*font: Monotype Corsiva, serif;*/
 }
 
 .main{
@@ -121,8 +126,18 @@ h3{
     font-weight: bold;
 }
 
+.none{
+    color:white;
+}
+
 section {
     padding: 75px 0;
+
+}
+
+p{
+
+    font-size: 18px;
 
 }
 
@@ -175,7 +190,6 @@ footer{
    
 
 }
-
 
 
 

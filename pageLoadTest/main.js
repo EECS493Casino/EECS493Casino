@@ -1,7 +1,7 @@
 $(function(){
 	$(".button_link").click(function(){
 		$loc = $(this).attr("id") + ".html";
-		window.alert($loc);
+		// window.alert($loc);
 		$("#content").load($loc);
 	});
 });
@@ -14,7 +14,7 @@ var cheats = function() {
 	if(x == true)
 	{
 		//cheats on 
-		window.alert("cheats on");
+		// window.alert("cheats on");
 	}	
 	else
 	{
@@ -29,7 +29,7 @@ var level = function(input){
 	
 	if(input.value == "hard")
 	{
-		window.alert(input.value);
+		// window.alert(input.value);
 	}	
 	else{
 
