@@ -104,7 +104,6 @@ var BlackJack = (function () {
         this.activate(this.hitButton);
         this.activate(this.stayButton);
         document.getElementById('output').innerHTML = "";
-        this.bank.bet();
         this.bank.disable();
     };
     BlackJack.prototype.endGame = function () {
