@@ -27,10 +27,11 @@
 .playerButtons button {
 	width: 100px;
 	height: 50px;
+	margin: 2px;
 }
 
 .playerButtons {
-	width: 210px;
+	width: 215px;
 	height: 110px;
 }
  
