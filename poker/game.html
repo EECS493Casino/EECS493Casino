@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	    <title>Poker</title>
+	    <link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+
+		<h1>Poker Card Game</h1>
+
+		<script type="text/javascript" src="poker.js"></script>
+
+		<h2>Pot: 
+			<p id="pot"></p>
+		</h2>
+
+		<!--Buttons-->
+		<button type="button" onclick="initGame()">Start New Game!</button>
+		<button disabled id="cheatbutton" type="button" onclick="toggleCheating()">Toggle Cheating</button>
+
+		<!--Cards for cpu-->
+		<h3>CPU's Hand</h3>
+		<table style="width:100%">
+		<tr>
+			<td><img  id="cpu_card1" onclick="clickCpuCard(1)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="cpu_card2" onclick="clickCpuCard(2)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="cpu_card3" onclick="clickCpuCard(3)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="cpu_card4" onclick="clickCpuCard(4)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="cpu_card5" onclick="clickCpuCard(5)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+		</tr>
+		</table>
+
+		<!--Cards for human player-->
+		<h3>Player Hand</h3>
+		<table style="width:100%">
+		<tr>
+			<td><img  id="hum_card1" onclick="clickCard(1)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="hum_card2" onclick="clickCard(2)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="hum_card3" onclick="clickCard(3)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="hum_card4" onclick="clickCard(4)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+			<td><img  id="hum_card5" onclick="clickCard(5)" src="../testing/images/back_of_card.png" height="108" width="75"></td>
+		</tr>
+		</table>
+		
+		<!--Buttons the player can use to play the game-->
+		<table style="width:100%">
+		<tr>
+			<td><button disabled id="openbutton" type="button" onclick="playeropen()" >Open</button></td>
+			<td><button disabled id="checkbutton" type="button" onclick="check()">Check</button></td>
+			<td><button disabled id="raisebutton" type="button" onclick="raise()">Raise</button></td>
+			<td><button disabled id="foldbutton" type="button" onclick="fold()">Fold</button></td>
+		</tr>
+		</table>
+
+	</body>
+
+</html> 
