@@ -97,11 +97,18 @@ a{
 
 a:hover{
     font-style: bold;
-     /*color: #66E0C2;*/
+     color: #66E0C2;
+}
+
+.navbar a:hover,
+.navbar a:focus,
+.navbar a.active {
+    outline: 0;
+    background-color: rgba(255,255,255,.3);
 }
 
 .links{
-    font: 15px #66E0C2;
+    /*font: 15px #66E0C2;*/
 }
 button{
     background-color: #00CC99;
@@ -119,7 +126,6 @@ button{
 
 button:hover{
      background-color: #66E0C2;
-
 }
 
 h1{
