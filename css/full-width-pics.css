@@ -71,7 +71,7 @@ td{
 }
 
 .navbar{
-    background-color: #00CC99;
+    /*background-color: #00CC99;*/
      text-transform: uppercase;
      /*font: 15px Brittannic Bold; */
     color: white;
@@ -90,22 +90,29 @@ td{
 }
 
 a{
-    color:white;
+    /*color:red;*/
     font-size: 15px;
+    /*background-color: #00CC99;*/
    
 }
 
-a:hover{
+ a:hover{
     font-style: bold;
-     color: #66E0C2;
+    color: #66E0C2;
 }
 
-.navbar a:hover,
+/*.navbar-nav>li>a:hover {
+  background-color: #B0B0B0;
+  color: red;
+}
+*/
+/*.navbar a:hover,
 .navbar a:focus,
 .navbar a.active {
     outline: 0;
     background-color: rgba(255,255,255,.3);
 }
+*/
 
 .links{
     /*font: 15px #66E0C2;*/
@@ -152,7 +159,6 @@ section {
 }
 
 p{
-
     font-size: 18px;
 
 }
@@ -201,14 +207,14 @@ p{
 
 footer{
     margin: 50px 0;
-    font: Monotype Corsiva, serif;
+    font-size: 16px;
     color: white;
-   
-
 }
 
 
-
+.foot{
+    background-color: #222;
+}
 @media(max-width:768px) {
     section {
         padding-top: 25px;
