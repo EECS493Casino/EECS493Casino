@@ -56,6 +56,7 @@ var BlackJack = (function () {
         this.stayButton.addEventListener('click', function (event) {
             _this.stayThere();
         });
+        this.newGameButton = document.getElementById('startGame');
         this.bank = bank;
     }
     BlackJack.prototype.activate = function (element) {
@@ -104,12 +105,11 @@ var BlackJack = (function () {
         this.activate(this.hitButton);
         this.activate(this.stayButton);
         document.getElementById('output').innerHTML = "";
-        this.bank.disable();
+        this.disable();
     };
     BlackJack.prototype.endGame = function () {
         var win;
         win = true;
-        this.bank.enable();
         this.deactivate(this.hitButton);
         this.deactivate(this.stayButton);
         allPlayers.getPlayer(0).revealAllCards();
@@ -149,13 +149,19 @@ var BlackJack = (function () {
             this.bank.win(1);
         document.getElementById("output").innerHTML =
             "<p>" + outputtext + "</p>";
-        this.newGameButton = document.getElementById('buttonholder');
-        this.newGameButton.style.display = "none";
-        this.newGameButton = document.getElementById('startGame');
-        this.newGameButton.style.display = "block";
+        this.enable();
+        document.getElementById('buttonholder').style.display = "none";
         this.newGameButton.addEventListener('click', function (event) {
             newGame();
         });
+    };
+    BlackJack.prototype.disable = function () {
+        this.bank.disable();
+        this.deactivate(this.newGameButton);
+    };
+    BlackJack.prototype.enable = function () {
+        this.bank.enable();
+        this.activate(this.newGameButton);
     };
     return BlackJack;
 })();

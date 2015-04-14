@@ -88,11 +88,13 @@
                     <h1 class="section-heading ">Blackjack</h1>
    <!-- Fixed Height Image Aside -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
-                <!-- <img class="img-responsive img-center" src="../images/table_background.jpg" alt="Blackjack table"> -->
+                <img class="img-responsive img-center" src="../images/table_background.jpg" alt="Blackjack table">
+                </br>
+                </br>
+                </br>
+                
 
-
-
-<table>
+<table id="gameWrapper">
 	<tr>
 		<td>
 			<div class="ui-widget-content draggable card-container">
@@ -108,31 +110,13 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td colspan="2" align="center">
 			<div class="ui-widget-content draggable card-container">
 				<p id="userscore">User has: </p>
 				<div id="usercards"></div>
-			</div>
-		</td>
-		<td>
-			<div class="ui-widget-content draggable game-controls">
-				<div id="output"></div>
-				<button id='startGame' class='btn active' onclick="startGame();">New Game</button>
-				<div id="buttonholder" style="display:none;"">
-		        	<button id="cheatToggle">Cheats: OFF</button>
+								<div id="buttonholder" style="display:none;"">
 					<button id="hitButton">Hit</button>
 					<button id="stayButton">stay</button>
-				</div>
-				<div class="bank">
-					<div id="bankInfoContainer">
-						<div id="bankRollBg">
-							<span class="bankAmounts">Bank Roll: $<span id="bankRoll"></span></span>
-						</div>
-						<div id="wagerBg">
-						<span class="bankAmounts">Wager: $<span id="wager"></span></span>
-						</div>
-					</div>
-					<div id="sliderWrapper"><div id="wager-slider"></div></div>
 				</div>
 			</div>
 		</td>
@@ -140,22 +124,41 @@
 </table>
 
 
-
+			<div class="ui-widget-content draggable game-controls">
+				<div id="output"></div>
+				<button id='startGame' class='btn active' onclick="startGame();">New Game</button>
+				<div class="bank">
+					<div id="bankInfoContainer">
+						<div id="bankRollBg">
+							<p class="bankAmounts">Bank Roll</p> <p>$<span id="bankRoll"></span></p>
+						</div>
+						<div id="wagerBg">
+						<p class="bankAmounts">Wager</p><p>$<span id="wager"></span></p>
+						</div>
+					</div>
+					<div id="sliderWrapper"><div id="wager-slider"></div></div>
+				</div>
+				<button id="cheatToggle" class="btn active">Cheats: OFF</button>
+			</div>
 
 	<script src="js/blackjack.js"></script>
-
-
-
-
-
-
-
-
+	
+</div>
             </div>              
         </div>
     </div>
 </div>
    </section>
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- Content Section -->
