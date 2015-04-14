@@ -6,19 +6,32 @@
 	margin-left: -350px;
 }
 
+#usercards {
+	position: absolute;
+	width: 800px;
+	left: 50%;
+	margin-left: -400px;
+
+} 
+
 #usercards img, #dealercards img, #DeckHolder img {
   height: 125px;
   width: 86.25px;
   padding: 2px;
 }
 
-#usercards span {
-	margin: 10px;
+.handWrapperClass {
+	display: inline-block;
 }
 
-#buttonholder button {
+.playerButtons button {
 	width: 100px;
 	height: 50px;
+}
+
+.playerButtons {
+	width: 210px;
+	height: 110px;
 }
  
 #startGame {

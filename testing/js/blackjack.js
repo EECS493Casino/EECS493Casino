@@ -74,7 +74,7 @@ var BlackJack = (function () {
         this.dealercards = document.getElementById('dealercards');
         this.dealercards.innerHTML = "";
         allPlayers.getPlayer(0).draw(this.dealercards);
-        document.getElementById('userscore').innerHTML =
+        document.getElementById('userscore' + this.curHand).innerHTML =
             "User has: " + allPlayers.getPlayer(1).score().toString();
         for (var i = 1; i <= this.numOfUserHands; ++i) {
             this.usercards[i].innerHTML = "";
@@ -89,15 +89,21 @@ var BlackJack = (function () {
         if (this.hitButton.className == "btn active") {
             var dealtCard = deck.deal();
             dealtCard.setHidden(false);
-            allPlayers.getPlayer(1).addCard(dealtCard);
+            allPlayers.getPlayer(this.curHand).addCard(dealtCard);
             this.updateUI();
-            if (allPlayers.getPlayer(1).score() > 21)
-                this.endGame();
+            if (allPlayers.getPlayer(this.curHand).score() > 21)
+                this.stayThere();
         }
     };
     BlackJack.prototype.stayThere = function () {
-        if (this.stayButton.className == "btn active") {
+        if (this.curHand < this.numOfUserHands) {
+            ++this.curHand;
+        }
+        else if (this.stayButton.className == "btn active") {
             this.endGame();
+        }
+        else {
+            alert("somethings wrong");
         }
     };
     BlackJack.prototype.newGame = function () {
@@ -108,10 +114,22 @@ var BlackJack = (function () {
         allPlayers.addPlayer('user' + this.numOfUserHands);
         allPlayers.firstDeal(deck);
         document.getElementById('usercards').innerHTML = "";
+        var newHandWrapper = document.createElement('div');
+        newHandWrapper.setAttribute('id', 'handWrapper_' + this.numOfUserHands);
+        newHandWrapper.setAttribute('class', 'handWrapperClass');
+        document.getElementById('usercards').appendChild(newHandWrapper);
+        var newUserScore = document.createElement('p');
+        newUserScore.setAttribute('id', 'userscore' + this.numOfUserHands);
+        newHandWrapper.appendChild(newUserScore);
         this.usercards[this.curHand] = document.createElement('span');
         this.usercards[this.curHand].setAttribute('id', 'hand_' + this.numOfUserHands);
         this.usercards[this.curHand].innerHTML = "";
-        document.getElementById('usercards').appendChild(this.usercards[this.curHand]);
+        newHandWrapper.appendChild(this.usercards[this.curHand]);
+        var buttonWrapper = document.createElement('div');
+        buttonWrapper.setAttribute('id', 'buttonWrapper_' + this.numOfUserHands);
+        buttonWrapper.setAttribute('class', 'playerButtons');
+        buttonWrapper.innerHTML = document.getElementById('buttonholder').innerHTML;
+        newHandWrapper.appendChild(buttonWrapper);
         this.updateUI();
         this.activate(this.hitButton);
         this.activate(this.stayButton);
@@ -162,7 +180,6 @@ var BlackJack = (function () {
         document.getElementById("output").innerHTML =
             "<p>" + outputtext + "</p>";
         this.enable();
-        document.getElementById('buttonholder').style.display = "none";
     };
     BlackJack.prototype.disable = function () {
         this.bank.disable();
@@ -178,10 +195,23 @@ var BlackJack = (function () {
         allPlayers.addPlayer('user' + this.numOfUserHands);
         var newCard = allPlayers.getPlayer(1).stealCard();
         allPlayers.getPlayer(this.numOfUserHands).addCard(newCard);
+        var newHandWrapper = document.createElement('div');
+        newHandWrapper.setAttribute('id', 'handWrapper_' + this.numOfUserHands);
+        newHandWrapper.setAttribute('class', 'handWrapperClass');
+        document.getElementById('usercards').appendChild(newHandWrapper);
+        var newUserScore = document.createElement('p');
+        newUserScore.setAttribute('id', 'userscore' + this.numOfUserHands);
+        newHandWrapper.appendChild(newUserScore);
         this.usercards[this.curHand + 1] = document.createElement('span');
         this.usercards[this.curHand + 1].setAttribute('id', 'hand_' + this.numOfUserHands);
         this.usercards[this.curHand + 1].innerHTML = "";
-        document.getElementById('usercards').appendChild(this.usercards[this.curHand + 1]);
+        newHandWrapper.appendChild(this.usercards[this.curHand + 1]);
+        var buttonWrapper = document.createElement('div');
+        buttonWrapper.setAttribute('id', 'buttonWrapper_' + this.numOfUserHands);
+        buttonWrapper.setAttribute('class', 'playerButtons');
+        buttonWrapper.innerHTML = document.getElementById('buttonholder').innerHTML;
+        newHandWrapper.appendChild(buttonWrapper);
+        this.updateUI();
     };
     return BlackJack;
 })();

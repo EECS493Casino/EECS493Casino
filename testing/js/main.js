@@ -78,7 +78,6 @@ function enableSlider(JQueryObj) {
 	JQueryObj.slider({ disabled: false });
 }
  function startGame() {
-	 $("#buttonholder").show();
 	 game.newGame();
  }
 
