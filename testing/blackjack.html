@@ -96,6 +96,11 @@
 
 <table id="gameWrapper">
 	<tr>
+		<td align="center" colspan="2">
+			<div id="output"></div>
+		</td>
+	</tr>
+	<tr>
 		<td>
 			<div class="ui-widget-content draggable card-container">
 				<p id="dealerscore">Dealer has: </p>
@@ -113,8 +118,9 @@
 		<td colspan="2" align="center">
 			<div class="ui-widget-content draggable card-container">
 				<p id="userscore">User has: </p>
-				<div id="usercards"></div>
-								<div id="buttonholder" style="display:none;"">
+				<div id="usercards">
+				</div>
+					<div id="buttonholder" style="display:none;"">
 					<button id="hitButton">Hit</button>
 					<button id="stayButton">stay</button>
 				</div>
@@ -125,7 +131,6 @@
 
 
 			<div class="ui-widget-content draggable game-controls">
-				<div id="output"></div>
 				<button id='startGame' class='btn active' onclick="startGame();">New Game</button>
 				<div class="bank">
 					<div id="bankInfoContainer">
@@ -175,20 +180,6 @@
         </div>
         <!-- /.container -->
     </section> 
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Rain Man Casino</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </footer>
-
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>

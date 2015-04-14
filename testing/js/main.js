@@ -79,16 +79,9 @@ function enableSlider(JQueryObj) {
 }
  function startGame() {
 	 $("#buttonholder").show();
-	game.updateUI();
-	 game.bank.bet();
-	 game.bank.disable();
- }
- 
- function newGame() {
-	 $("#buttonholder").show();
 	 game.newGame();
  }
- 
+
 $(function() {
     $( ".draggable" ).draggable();
 });

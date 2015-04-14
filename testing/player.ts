@@ -51,6 +51,14 @@ class Player{
 		}
 		return output;
 	}
+	stealCard(): Card{
+		var index: number = this.hand.length-1;
+		var tempCard:Card = this.hand[index]
+		if (index != undefined) {
+		   this.hand.splice(index, 1);
+		}
+		return tempCard;
+	}
 }
 
 // This container shall hold all current players and will

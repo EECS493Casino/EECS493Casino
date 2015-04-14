@@ -7,10 +7,12 @@ class BlackJack{
 	hitButton: HTMLElement;
 	stayButton: HTMLElement;
 	dealercards: HTMLElement;
-	usercards: HTMLElement;
+	usercards: HTMLElement[] = [];
 	deckHolder: HTMLElement;
 	newGameButton: HTMLElement;
 	bank: Bank;
+	numOfUserHands: number;
+	curHand: number;
 
 	constructor(bank: Bank){
 		this.hitButton = document.getElementById('hitButton');
@@ -26,6 +28,8 @@ class BlackJack{
 		});
 		this.newGameButton = document.getElementById('startGame');
 		this.bank = bank;
+		this.curHand = 1;
+		this.numOfUserHands = 1;
 	}
 	activate(element: HTMLElement){
 		element.className = "btn active";
@@ -41,9 +45,12 @@ class BlackJack{
 		allPlayers.getPlayer(0).draw(this.dealercards);
 		document.getElementById('userscore').innerHTML =
 			"User has: " + allPlayers.getPlayer(1).score().toString();
-		this.usercards = document.getElementById('usercards');
-		this.usercards.innerHTML = "";
-		allPlayers.getPlayer(1).draw(this.usercards);
+
+		for(var i = 1; i <= this.numOfUserHands; ++i) {
+			this.usercards[i].innerHTML = "";
+			allPlayers.getPlayer(i).draw(this.usercards[i]);
+		}
+		
 		this.deckHolder = document.getElementById('DeckHolder');
 		this.deckHolder.innerHTML = "";
 		deck.topCard().setHidden(true);
@@ -65,17 +72,28 @@ class BlackJack{
 		}
 	}
 	newGame(){
+		this.curHand = 1;
+		this.numOfUserHands = 1;
 		deck = new Deck();
 		allPlayers = new PlayerContainer();
 
-		allPlayers.addPlayer('user');
+		allPlayers.addPlayer('user' + this.numOfUserHands);
 		allPlayers.firstDeal(deck);
+
+		document.getElementById('usercards').innerHTML = "";
+		this.usercards[this.curHand] = document.createElement('span');
+		this.usercards[this.curHand].setAttribute('id', 'hand_' + this.numOfUserHands);
+		this.usercards[this.curHand].innerHTML = "";
+		document.getElementById('usercards').appendChild(this.usercards[this.curHand]);
 
 		this.updateUI();
 		this.activate(this.hitButton);
 		this.activate(this.stayButton);
 		document.getElementById('output').innerHTML = "";
+		
+		this.bank.bet();
 		this.disable();
+
 	}
 	endGame(){
 		var win:boolean;
@@ -119,9 +137,6 @@ class BlackJack{
 
 		this.enable();
 		document.getElementById('buttonholder').style.display = "none";
-		this.newGameButton.addEventListener('click', (event): void=>{
-			newGame();
-		});
 	}
 	
 	disable() {
@@ -132,5 +147,16 @@ class BlackJack{
 	enable() {
 		this.bank.enable();
 		this.activate(this.newGameButton);
+	}
+	addPlayer() {
+		this.curHand;
+		++this.numOfUserHands;
+		allPlayers.addPlayer('user' + this.numOfUserHands);
+		var newCard : Card = allPlayers.getPlayer(1).stealCard();
+		allPlayers.getPlayer(this.numOfUserHands).addCard(newCard);
+		this.usercards[this.curHand + 1] = document.createElement('span');
+		this.usercards[this.curHand + 1].setAttribute('id', 'hand_' + this.numOfUserHands);
+		this.usercards[this.curHand + 1].innerHTML = "";
+		document.getElementById('usercards').appendChild(this.usercards[this.curHand + 1]);
 	}
 }
