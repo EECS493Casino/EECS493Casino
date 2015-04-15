@@ -15,12 +15,12 @@ var cheats = function() {
 	if(x == true)
 	{
 		cheatsOn = true;
-	}	
+	}
 	else
 	{
 		cheatsOn = false;
-	}	
-    
+	}
+
 }
 
 var level = function(input){
@@ -31,11 +31,11 @@ var level = function(input){
 	{
 		//easy
 		//window.alert("easy");
-	}	
+	}
 	else
 	{
 		//difficult
-	}	
+	}
 
 }
 
@@ -47,12 +47,12 @@ var music = function(input){
 	{
 		//music on
 		window.alert("Music feature not implemented yet.");
-	}	
+	}
 	else
 	{
 		//music off
 		window.alert("Music feature not implemented yet.");
-	}	
+	}
 
 }
 
@@ -64,12 +64,12 @@ var music = function(input){
 	{
 		//music on
 		window.alert("Music feature not implemented yet.");
-	}	
+	}
 	else
 	{
 		//music off
 		window.alert("Music feature not implemented yet.");
-	}	
+	}
 
 }
 
@@ -112,7 +112,7 @@ function enableSlider(JQueryObj) {
 	 		alert("Looks like you've lost all your money.  Please come again soon!");
 	 	}
 }
- 
+
 $(function() {
     $( ".draggable" ).draggable();
 });
@@ -122,4 +122,3 @@ function updateCheatsVar (){
 		$('#myonoffswitch').prop('checked', cheatsOn);
 	console.log(cheatsOn);
 }
-
