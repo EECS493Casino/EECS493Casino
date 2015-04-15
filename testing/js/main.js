@@ -1,3 +1,5 @@
+
+
 $(function(){
 	$(".button_link").click(function(){
 		$loc = $(this).attr("id") + ".html";
@@ -6,8 +8,7 @@ $(function(){
 	});
 });
 
-var cheatsOn = true;
-
+var cheatsOn = false;
 
 var cheats = function() {
 	var x = document.getElementById("myonoffswitch").checked;
@@ -34,6 +35,23 @@ var level = function(input){
 	else
 	{
 		//difficult
+	}	
+
+}
+
+var music = function(input){
+
+
+	var x = document.getElementById("musicswitch").checked;
+	if(x == true)
+	{
+		//music on
+		window.alert("Music feature not implemented yet.");
+	}	
+	else
+	{
+		//music off
+		window.alert("Music feature not implemented yet.");
 	}	
 
 }
@@ -98,3 +116,11 @@ function enableSlider(JQueryObj) {
 $(function() {
     $( ".draggable" ).draggable();
 });
+
+function updateCheatsVar (){
+	if ($('#myonoffswitch'))
+		$('#myonoffswitch').prop('checked', getCookie('cheatsOn'));
+	cheatsOn = getCookie('cheatsOn');
+	console.log(cheatsOn);
+}
+

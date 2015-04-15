@@ -66,8 +66,8 @@ class BlackJack{
 			// allPlayers.getPlayer(this.curHand).printHand(0);
 			this.updateUI();
 			if (allPlayers.getPlayer(this.curHand).score() > 21) {
-				this.stayThere();
 				document.getElementById('userscore' + this.curHand).innerHTML = "You bust.";
+				this.stayThere();
 			}
 		}
 	}
