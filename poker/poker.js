@@ -1,11 +1,14 @@
 var cheatingAllowed = false;
 var pot = 0;
 var winnings = 500;
+var cpuBet = 0;
 var cards = [];//array of all cards
 var deck = [];
 var cpuHand = [];
 var playerHand = [];
-
+// var cardsSelectable = true;
+// var numCardsSelected = 0;
+// var selectedStatus = [false,false,false,false,false];
 
 function loadCards(){
     cards = [];//clear the array
@@ -86,6 +89,7 @@ Array.prototype.shuffle = function() {
  */
 function initDeck()
 {
+    deck = [];
     for (var i = 0; i < 52; i++)
     {
         deck.push(i);
@@ -110,6 +114,7 @@ function dealFiveEach()
 function updateUI()
 {
     document.getElementById("pot").innerHTML = pot.toString();
+    document.getElementById("winnings").innerHTML = winnings.toString();
 
     for (var i = 1; i <= 5; i++)
     {
@@ -119,26 +124,52 @@ function updateUI()
         document.getElementById(elementId).src = sourceString;
     }
 
+    // for(var i=0; i<5; i++)
+    // {
+    //     var x = i+1;
+    //     elementId = "hum_card".concat(x.toString());
+    //     if(selectedStatus[i])
+    //     {
+    //         document.getElementById(elementId).style.border = "3px solid yellow";
+    //     }
+    //     else if(selectedStatus[i]==false || cardsSelectable==false)
+    //     {
+    //         document.getElementById(elementId).style.border = "";
+    //     }
+    // }
+
+    return;
+}
+
+/* startRound()
+ * sets up the game for a new round
+ */
+ function startRound()
+ {
+    initDeck();
+    playerHand = [];
+    cpuHand = [];
+    dealFiveEach();
+    pot = 0;
+    cheatingAllowed = false;
+    document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
+    resetCpuCards();
+    updateUI();
     document.getElementById("openbutton").disabled = false;
     document.getElementById("checkbutton").disabled = false;
-    document.getElementById("raisebutton").disabled = false;
-    document.getElementById("foldbutton").disabled = false;
-}
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+    alert("It's your turn, you may open or check");
+ }
+
 
 /* initGame()
  * Used to initialize the game. Make sure that this function is
  * called before the others in order to get more defined behavior.
  */
 function initGame(){
-    pot = 0;
-    cheatingAllowed = false;
-    document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     loadCards();
-    initDeck();
-    dealFiveEach();
-    updateUI();
-    document.getElementById("cheatbutton").disabled = false;
-    alert("a new game has begun!");
+    startRound();
 }
 
 /* resetCpuCards()
@@ -170,7 +201,28 @@ function toggleCheating(){
 }
 
 function clickCard(x){
-    alert(x);
+    // var elementId = "hum_card".concat(x.toString());
+    // if(cardsSelectable)
+    // {
+    //     var i = x-1;
+    //     if(selectedStatus[i] == false && numCardsSelected<3)
+    //     {
+    //         //document.getElementById(elementId).style.border = "3px solid yellow";
+    //         selectedStatus[i] = true;
+    //         numCardsSelected++;
+    //         console.log(numCardsSelected);
+    //     }
+    //     else if(selectedStatus[i] == true)
+    //     {
+    //         //document.getElementById(elementId).style.border = "";
+    //         selectedStatus[i] = false;
+    //         numCardsSelected--;
+    //         console.log(numCardsSelected);
+    //     }
+    //     else{}
+    // }
+    // updateUI();
+    return;
 }
 
 /* flipCard
@@ -208,23 +260,157 @@ function clickCpuCard(x){
 }
 
 
+// function replaceSelectedCards()
+// {
+//     var keeps = [];
+//     var returns = [];
+//     for (var i = 0; i < 5; i++)
+//     {
+//         if(selectedStatus[i] == false)
+//             keeps.push(playerHand[i]);
+//         else
+//             returns.push(playerHand[i]);
+//         selectedStatus[i] = false;
+//     }
+//     playerHand = [];
+//     for (var i = 0; i < keeps.length(); i++)
+//         playerHand.push(keeps[i]);
+//     for (var i = 0; i < returns.length(); i++)
+//         deck.splice(1,0,returns[i]);
+//     while(playerHand.length < 5)
+//     {
+//         var a = deck.pop();
+//         playerHand.push(a);
+//     }
+
+//     updateUI();
+//     return;
+// }
+
 function playeropen(){
     console.log("the user opens");
     var bet = prompt("Please enter your bet", 100);
     if (bet != null)
         pot += parseInt(bet);
+    else
+        bet = 0;
+    winnings = winnings-bet;
     updateUI();
+    cpuTakesTurn("open",bet);
 }
 
 
 function check(){
     console.log("the user checks");
+    cpuTakesTurn("check",0);
 }
 
 function raise(){
-    console.log("the user raises");
+    var bet = 0;
+    while(bet < cpuBet)
+    {
+        bet = prompt("What do you raise?", 100);
+        if (bet == null || isNaN(bet))
+        {
+            bet = 0;
+            alert("please input a number");
+        }
+        if(bet < cpuBet)
+            alert("Must be greater than or equal to previous bet, " + cpuBet);
+    }
+    pot += parseInt(bet);
+    winnings = winnings-bet;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+    updateUI();
+    exposeAndCompareHands();
+
 }
 
 function fold(){
     console.log("the user folds");
+    alert("You folded, the CPU gets the pot");
+    pot = 0;
+    updateUI();
+    startRound();
+}
+
+
+//Returns a random integer between min (inclusive) and max (inclusive)
+//http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function cpuOpens()
+{
+    console.log("CPU opens");
+    cpuBet = getRandomInt(50,250);
+    pot += parseInt(cpuBet);
+    alert("The CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).");
+    updateUI();
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = false;
+    document.getElementById("foldbutton").disabled = false;
+}
+
+function cpuChecks()
+{
+    alert("the CPU checks");
+    exposeAndCompareHands();
+}
+
+function cpuRaises(amount)
+{
+    alert("CPU raises ".concat(amount.toString()));
+    pot += parseInt(amount);
+    updateUI();
+    exposeAndCompareHands();
+}
+
+function cpuFolds()
+{
+    alert("the CPU folded, you get the pot");
+    winnings += parseInt(pot);
+    pot = 0;
+    updateUI();
+    startRound();
+}
+
+function cpuTakesTurn(previousAction,value)
+{
+    if(previousAction == "open")
+    {
+        if(value > 250)
+            cpuFolds();
+        else
+            cpuRaises(value);
+    }
+    else if(previousAction == "check")
+    {
+        if(Math.random() < 0.3)
+            cpuChecks();
+        else
+            cpuOpens();
+    }
+    else if(previousAction == "raise")
+    {
+        if(value > 250)
+            cpuFolds();
+        else
+            cpuChecks();        
+    }
+    else{}
+}
+
+function exposeAndCompareHands(){
+    alert("exposing and comparing hands");
+    alert("Your hand is better, you get the pot");
+    winnings += parseInt(pot);
+    pot = 0;
+    updateUI();
+    startRound();
 }
