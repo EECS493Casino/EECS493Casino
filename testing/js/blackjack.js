@@ -99,8 +99,8 @@ var BlackJack = (function () {
             allPlayers.getPlayer(this.curHand).addCard(dealtCard);
             this.updateUI();
             if (allPlayers.getPlayer(this.curHand).score() > 21) {
-                this.stayThere();
                 document.getElementById('userscore' + this.curHand).innerHTML = "You bust.";
+                this.stayThere();
             }
         }
     };
