@@ -119,7 +119,7 @@ function updateUI()
     for (var i = 1; i <= 5; i++)
     {
         var elementId = "hum_card".concat(i.toString());
-        var cardNumber = playerHand[i];
+        var cardNumber = playerHand[i-1];
         var sourceString = cards[cardNumber].imgpath;
         document.getElementById(elementId).src = sourceString;
     }
