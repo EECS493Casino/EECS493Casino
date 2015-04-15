@@ -132,6 +132,13 @@
 	background: none;
 	border: none;
 }
+
+.pokerTextBox{
+    background-color: #E3C100;
+   	border-radius: 5px;
+    width: 300px;
+}
+
 body{
     background-image: url("../images/casino_background.jpg");
 	background-repeat: no-repeat;
