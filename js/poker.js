@@ -1,3 +1,4 @@
+var cardsLoaded = false;
 var cheatingAllowed = false;
 var pot = 0;
 var winnings = 500;
@@ -67,6 +68,8 @@ function loadCards(){
     cards.push({name:"Queen of Spades", suit:"Spades", value:12, flipped:false, imgpath:"images/queen_of_spades.png"});
     cards.push({name:"King of Spades", suit:"Spades", value:13, flipped:false, imgpath:"images/king_of_spades.png"});
     cards.push({name:"Ace of Spades", suit:"Spades", value:14, flipped:false, imgpath:"images/ace_of_spades.png"});
+
+    cardsLoaded = true;
 }
 
 // shuffle method for Array prototype
@@ -146,6 +149,8 @@ function updateUI()
  */
  function startRound()
  {
+    if(!cardsLoaded)
+        loadCards();
     initDeck();
     playerHand = [];
     cpuHand = [];
@@ -461,5 +466,5 @@ function getHandValue(hand)
 }
 
 $(document).ready(function(){
-    initGame();
+    //this is called when the page loads
 });

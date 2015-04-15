@@ -59,6 +59,17 @@ class Player{
 		}
 		return tempCard;
 	}
+	canSplit(): boolean {
+		if (this.hand.length == 2) {
+			if (this.hand[0].value < 8 || this.hand[0].value == 12) {
+				if (this.hand[0].value == this.hand[1].value)
+					return true;
+			} else if ((this.hand[0].value >= 8 && this.hand[0].value < 12) && (this.hand[1].value >= 8 && this.hand[1].value < 12))
+				return true;
+
+		}
+		return false;
+	}
 }
 
 // This container shall hold all current players and will
