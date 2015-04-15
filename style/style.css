@@ -142,4 +142,5 @@
 body{
     background-image: url("../images/casino_background.jpg");
 	background-repeat: no-repeat;
+	background-size: auto;
 }
