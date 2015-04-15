@@ -141,6 +141,7 @@ h1{
 
 .main{
     background-color: rgba(255,255,255,.9);
+    padding: 10px;
 
 }
 
@@ -288,8 +289,8 @@ footer{
 }
 .levelswitch-inner {
     display: block; width: 200%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+    /*-moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;*/
 }
 .levelswitch-inner:before, .levelswitch-inner:after {
     display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
@@ -298,28 +299,28 @@ footer{
 }
 .levelswitch-inner:before {
     content: "EASY";
-    padding-left: -1px;
-    background-color: #34A7C1; color: #FFFFFF;
+    padding-left: 10px;
+    background-color: #EEEEEE; color: #999999;
 }
 .levelswitch-inner:after {
-    content: "HARD";
-    padding-right: 10px;
+    content: "EASY";
+    padding-left: 10px;
     background-color: #EEEEEE; color: #999999;
-    text-align: right;
+    /*text-align: right;*/
 }
 .levelswitch-switch {
     display: block; width: 18px; margin: 6px;
     background: #FFFFFF;
     border: 2px solid #999999; border-radius: 20px;
     position: absolute; top: 0; bottom: 0; right: 56px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+ /*   -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; */
 }
 .levelswitch-checkbox:checked + .levelswitch-label .levelswitch-inner {
     margin-left: 0;
 }
 .levelswitch-checkbox:checked + .levelswitch-label .levelswitch-switch {
-    right: 0px; 
+    /*right: 0px; */
 }
 
 
@@ -337,8 +338,8 @@ footer{
 }
 .musicswitch-inner {
     display: block; width: 200%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+   /* -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s; */
 }
 .musicswitch-inner:before, .musicswitch-inner:after {
     display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
@@ -347,26 +348,26 @@ footer{
 }
 .musicswitch-inner:before{
     content: "OFF";
-    padding-left: -1px;
+    padding-left: 10px;
     background-color: #EEEEEE; color: #999999;
 }
 .musicswitch-inner:after {
     content: "OFF";
-    padding-right: 10px;
+    padding-left: 10px;
     background-color: #EEEEEE; color: #999999;
-    text-align: right;
+    /*text-align: right;*/
 }
 .musicswitch-switch {
     display: block; width: 18px; margin: 6px;
     background: #FFFFFF;
     border: 2px solid #999999; border-radius: 20px;
     position: absolute; top: 0; bottom: 0; right: 56px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+   /* -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; */
 }
 .musicswitch-checkbox:checked + .musicswitch-label .musicswitch-inner {
     margin-left: 0;
 }
 .musicswitch-checkbox:checked + .musicswitch-label .musicswitch-switch {
-    right: 0px; 
+    /*right: 0px; */
 }

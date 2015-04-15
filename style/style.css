@@ -4,6 +4,7 @@
 	top: 200px;
 	left: 50%;
 	margin-left: -350px;
+	margin-top: 5%;
 }
 
 #usercards {
@@ -140,7 +141,13 @@
     color:#ffffff;
 }
 
+.btn-lg{
+	display: block;
+	margin: auto;
+}
+
 body{
     background-image: url("../images/casino_background.jpg");
 	background-repeat: no-repeat;
+	background-size: auto;
 }

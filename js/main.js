@@ -8,6 +8,10 @@ $(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('#content').load("home.html");
+});
+
 var cheatsOn = false;
 
 var cheats = function() {
@@ -30,31 +34,16 @@ var level = function(input){
 	if(x == true)
 	{
 		//easy
-		//window.alert("easy");
+		window.alert("Difficulty feature not implemented yet.");
 	}
 	else
 	{
 		//difficult
+		window.alert("Difficulty feature not implemented yet.");
 	}
 
 }
 
-var music = function(input){
-
-
-	var x = document.getElementById("musicswitch").checked;
-	if(x == true)
-	{
-		//music on
-		window.alert("Music feature not implemented yet.");
-	}
-	else
-	{
-		//music off
-		window.alert("Music feature not implemented yet.");
-	}
-
-}
 
 var music = function(input){
 
