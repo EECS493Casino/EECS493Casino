@@ -88,10 +88,8 @@ var BlackJack = (function () {
                 "User has: " + allPlayers.getPlayer(i).score().toString();
             this.usercards[i].innerHTML = "";
             allPlayers.getPlayer(i).draw(this.usercards[i]);
-        }
-        if (allPlayers.getPlayer(this.curHand).score() == 21 && allPlayers.getPlayer(this.curHand).hand.length == 2) {
-            document.getElementById('userscore' + this.curHand).innerHTML = "Blackjack!";
-            this.stayThere();
+            if (allPlayers.getPlayer(i).score() == 21 && allPlayers.getPlayer(i).hand.length == 2)
+                document.getElementById('userscore' + i).innerHTML = "Blackjack!";
         }
     };
     BlackJack.prototype.hitThat = function () {
@@ -129,11 +127,8 @@ var BlackJack = (function () {
             }
             this.hitThat();
         }
-        else if (this.stayButton.className == "btn active") {
-            this.endGame();
-        }
         else {
-            alert("somethings wrong");
+            this.endGame();
         }
     };
     BlackJack.prototype.newGame = function () {
@@ -158,6 +153,9 @@ var BlackJack = (function () {
         }
         this.bank.bet();
         this.disable();
+        if (allPlayers.getPlayer(1).score() == 21) {
+            this.stayThere();
+        }
     };
     BlackJack.prototype.endGame = function () {
         var win;
@@ -290,11 +288,10 @@ var BlackJack = (function () {
         buttonWrapper.appendChild(stayButton);
         buttonWrapper.appendChild(splitButton);
         if (id > 1) {
-            this.hitThat();
             this.deactivate(document.getElementById('hitButton_' + id));
             this.deactivate(document.getElementById('stayButton_' + id));
             this.deactivate(document.getElementById('splitButton_' + id));
-            this.updateUI();
+            this.hitThat();
         }
     };
     return BlackJack;

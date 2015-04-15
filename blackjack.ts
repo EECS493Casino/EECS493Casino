@@ -44,22 +44,18 @@ class BlackJack{
 		this.dealercards.innerHTML = "";
 		allPlayers.getPlayer(0).draw(this.dealercards);
 
-
 		this.deckHolder = document.getElementById('DeckHolder');
 		this.deckHolder.innerHTML = "";
 		deck.topCard().setHidden(true);
 		deck.topCard().draw(this.deckHolder);
-		
+
 		for(var i = 1; i <= this.numOfUserHands; ++i) {
 			document.getElementById('userscore' + i).innerHTML =
 			"User has: " + allPlayers.getPlayer(i).score().toString();
 			this.usercards[i].innerHTML = "";
 			allPlayers.getPlayer(i).draw(this.usercards[i]);
-		}
-
-		if (allPlayers.getPlayer(this.curHand).score() == 21 && allPlayers.getPlayer(this.curHand).hand.length == 2) {
-			document.getElementById('userscore' + this.curHand).innerHTML = "Blackjack!";
-			this.stayThere();
+			if (allPlayers.getPlayer(i).score() == 21 && allPlayers.getPlayer(i).hand.length == 2)
+				document.getElementById('userscore' + i).innerHTML = "Blackjack!";
 		}
 	}
 	hitThat(){
@@ -96,10 +92,8 @@ class BlackJack{
 				this.activate(document.getElementById('splitButton_' + this.curHand));
 			}
 			this.hitThat();
-		} else if (this.stayButton.className == "btn active"){
-			this.endGame();
 		} else {
-			alert("somethings wrong");
+			this.endGame();
 		}
 	}
 	newGame(){
@@ -125,9 +119,13 @@ class BlackJack{
 		if (allPlayers.getPlayer(this.curHand).canSplit()) {
 			this.activate(document.getElementById('splitButton_' + this.curHand));
 		}
-		
+
 		this.bank.bet();
 		this.disable();
+		
+		if (allPlayers.getPlayer(1).score() == 21) {
+			this.stayThere();
+		}
 
 	}
 	endGame(){
@@ -260,11 +258,10 @@ class BlackJack{
 		buttonWrapper.appendChild(splitButton);
 
 		if (id > 1) {
-			this.hitThat();
 			this.deactivate(document.getElementById('hitButton_' + id));
 			this.deactivate(document.getElementById('stayButton_' + id));
 			this.deactivate(document.getElementById('splitButton_' + id));
-			this.updateUI();
+			this.hitThat();
 		}
 	}
 }
