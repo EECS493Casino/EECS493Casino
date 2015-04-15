@@ -134,7 +134,8 @@
 }
 
 .pokerTextBox{
-    background-color: lightgrey;
+    background-color: #E3C100;
+   	border-radius: 5px;
     width: 300px;
 }
 
