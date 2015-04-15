@@ -164,9 +164,9 @@ function updateUI()
     document.getElementById("checkbutton").disabled = false;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
-    alert("It's your turn, you may open or check");
-    $("#log").html("It's your turn, you may open or check");
-
+    document.getElementById("log").innerHTML = "";//clear log
+    document.getElementById("log").innerHTML += "Starting new round...";
+    document.getElementById("log").innerHTML += "\nYou may open or check";
  }
 
 
@@ -175,26 +175,32 @@ function updateUI()
  * status of each cpu card to "false" and 
  */
 function resetCpuCards(){
-    for (var i = 1; i <= 5; i++)
+    if(cardsLoaded)
     {
-        var elementId = "cpu_card".concat(i.toString());
-        var cardNumber = cpuHand[i-1];
-        cards[cardNumber].flipped = false;
-        document.getElementById(elementId).src = "testing/images/back_of_card.png";
+        for (var i = 1; i <= 5; i++)
+        {
+            var elementId = "cpu_card".concat(i.toString());
+            var cardNumber = cpuHand[i-1];
+            cards[cardNumber].flipped = false;
+            document.getElementById(elementId).src = "testing/images/back_of_card.png";
+        }
     }
+    return;
 }
 
 function toggleCheating(){
-    document.getElementById("log").innerHTML += "\ncheating toggled";
+    document.getElementById("log").innerHTML += "\n";
 	if(cheatingAllowed == true)
 	{
         resetCpuCards();
 		cheatingAllowed = false;
+        document.getElementById("log").innerHTML += "\n";
 		document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
 	}
 	else
 	{
 		cheatingAllowed = true;
+        document.getElementById("log").innerHTML += "\n";
 		document.getElementById("cheatbutton").innerHTML = "Turn Cheating Off";
 	}
     return;
@@ -296,12 +302,14 @@ function playeropen(){
         bet = 0;
     winnings = winnings-bet;
     updateUI();
+    document.getElementById("log").innerHTML += "\nYou opened at $" + bet;
     cpuTakesTurn("open",bet);
 }
 
 
 function check(){
     console.log("the user checks");
+    document.getElementById("log").innerHTML += "\nYou checked.";
     cpuTakesTurn("check",0);
 }
 
@@ -325,13 +333,13 @@ function raise(){
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
     updateUI();
+    document.getElementById("log").innerHTML += "\nYou raised $" + bet;
     exposeAndCompareHands();
 
 }
 
 function fold(){
-    console.log("the user folds");
-    alert("You folded, the CPU gets the pot");
+    document.getElementById("You foldedm the CPU gets the pot!").innerHTML += "\n";
     $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
@@ -350,9 +358,8 @@ function cpuOpens()
     console.log("CPU opens");
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
-    alert("The CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).");
-    $("#log").html("The CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).");
     updateUI();
+    document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).";
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = false;
@@ -361,14 +368,13 @@ function cpuOpens()
 
 function cpuChecks()
 {
-    alert("the CPU checks");
-    $("#log").html("the CPU checks");
+    document.getElementById("log").innerHTML += "\nThe CPU checks";
     exposeAndCompareHands();
 }
 
 function cpuRaises(amount)
 {
-    alert("CPU raises ".concat(amount.toString()));
+    document.getElementById("log").innerHTML += "\nCPU raises ".concat(amount.toString());
     pot += parseInt(amount);
     updateUI();
     exposeAndCompareHands();
@@ -376,7 +382,7 @@ function cpuRaises(amount)
 
 function cpuFolds()
 {
-    alert("the CPU folded, you get the pot");
+    document.getElementById("log").innerHTML += "\nThe CPU folded, you get the pot";
     winnings += parseInt(pot);
     pot = 0;
     updateUI();
@@ -410,8 +416,8 @@ function cpuTakesTurn(previousAction,value)
 }
 
 function exposeAndCompareHands(){
-    alert("exposing and comparing hands");
-    alert("Your hand is better, you get the pot");
+    document.getElementById("log").innerHTML += "\nexposing and comparing hands";
+    document.getElementById("log").innerHTML += "\nYour hand is better, you get the pot";
     winnings += parseInt(pot);
     pot = 0;
     updateUI();
