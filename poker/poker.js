@@ -414,3 +414,48 @@ function exposeAndCompareHands(){
     updateUI();
     startRound();
 }
+
+function getHandValue(hand)
+{
+    //count how many times each type of card appears
+    var counts = new Array(13); 
+    for ( var i = 0; i < 13; i++)
+        counts[i] = 0; 
+    for(var i=0; i<5; i++)
+    {
+        var cardVal = hand[i].value;
+        counts[value-2]++
+    }
+
+
+    //count the number of pairs,threes,and fours
+    var pairs = 0, threes = 0, fours = 0;
+    for(var i=0; i<13; i++)
+    {
+        if(counts[i]==2)
+            pairs++;
+        if(counts[i]==3)
+            threes++;
+        if(counts[i]==4)
+            fours++
+    }
+
+    //count how many times a specific suit appears
+    var suits = new Array(4);
+    for ( var i = 0; i < 4; i++ )
+        suits[i] = 0;
+    for(var i=0; i<5; i++)
+    {
+        var suit = hand[i].suit;
+        if(suit == "Clubs")
+            suits[0]++;
+        else if(suit == "Diamonds")
+            suits[1]++;
+        else if(suit == "Hearts")
+            suits[2]++;
+        else if(suit == "Spades")
+            suits[3]++;
+        else{}
+    }
+
+}
