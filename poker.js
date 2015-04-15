@@ -459,3 +459,7 @@ function getHandValue(hand)
     }
 
 }
+
+$(document).ready(function(){
+    initGame();
+});
