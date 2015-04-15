@@ -165,6 +165,7 @@ function updateUI()
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
     alert("It's your turn, you may open or check");
+    $("#log").html("It's your turn, you may open or check");
  }
 
 
@@ -329,6 +330,7 @@ function raise(){
 function fold(){
     console.log("the user folds");
     alert("You folded, the CPU gets the pot");
+    $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
     startRound();
@@ -347,6 +349,7 @@ function cpuOpens()
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
     alert("The CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).");
+    $("#log").html("The CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).");
     updateUI();
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
@@ -357,6 +360,7 @@ function cpuOpens()
 function cpuChecks()
 {
     alert("the CPU checks");
+    $("#log").html("the CPU checks");
     exposeAndCompareHands();
 }
 
