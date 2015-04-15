@@ -166,6 +166,7 @@ function updateUI()
     document.getElementById("foldbutton").disabled = true;
     alert("It's your turn, you may open or check");
     $("#log").html("It's your turn, you may open or check");
+
  }
 
 
@@ -184,6 +185,7 @@ function resetCpuCards(){
 }
 
 function toggleCheating(){
+    document.getElementById("log").innerHTML += "\ncheating toggled";
 	if(cheatingAllowed == true)
 	{
         resetCpuCards();
