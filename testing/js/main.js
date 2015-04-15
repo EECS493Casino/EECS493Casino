@@ -81,6 +81,21 @@ function enableSlider(JQueryObj) {
 	 game.newGame();
  }
 
+ function updateSliderValues(JQueryObj, bank) {
+	 	if (bank.bankRoll > 0) {
+	 		if (bank.wager > bank.bankRoll) {
+	 			JQueryObj.slider("option", "value", Math.ceil(bank.bankRoll / 10));
+	 			bank.updateWager(Math.ceil(bank.bankRoll / 10));
+	 		}
+	 		JQueryObj.slider("option", "max", bank.bankRoll);
+	 	} else {
+	 		disableSlider(JQueryObj);
+	 		JQueryObj.slider("option", "value", 1);
+	 		JQueryObj.slider("option", "max", 1);
+	 		alert("Looks like you've lost all your money.  Please come again soon!");
+	 	}
+}
+ 
 $(function() {
     $( ".draggable" ).draggable();
 });

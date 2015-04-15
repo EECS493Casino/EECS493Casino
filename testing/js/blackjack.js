@@ -13,6 +13,8 @@ var Bank = (function () {
     };
     Bank.prototype.bet = function () {
         this.bankRoll -= this.wager;
+        if (this.bankRoll < 0)
+            this.bankRoll = 0;
         this.updateBankRollView();
     };
     Bank.prototype.initUi = function () {
@@ -38,6 +40,9 @@ var Bank = (function () {
     };
     Bank.prototype.enable = function () {
         enableSlider(this.slider);
+    };
+    Bank.prototype.update = function () {
+        updateSliderValues(this.slider, this);
     };
     return Bank;
 })();
@@ -103,7 +108,12 @@ var BlackJack = (function () {
         if (this.curHand < this.numOfUserHands) {
             this.deactivate(document.getElementById('hitButton_' + this.curHand));
             this.deactivate(document.getElementById('stayButton_' + this.curHand));
+            this.deactivate(document.getElementById('splitButton_' + this.curHand));
             ++this.curHand;
+            this.activate(document.getElementById('hitButton_' + this.curHand));
+            this.activate(document.getElementById('stayButton_' + this.curHand));
+            this.activate(document.getElementById('splitButton_' + this.curHand));
+            this.hitThat();
         }
         else if (this.stayButton.className == "btn active") {
             this.endGame();
@@ -113,6 +123,10 @@ var BlackJack = (function () {
         }
     };
     BlackJack.prototype.newGame = function () {
+        if (this.bank.bankRoll == 0) {
+            alert("You are out of money! Please visit again later.");
+            return;
+        }
         this.curHand = 1;
         this.numOfUserHands = 1;
         deck = new Deck();
@@ -124,7 +138,6 @@ var BlackJack = (function () {
         this.updateUI();
         this.activate(this.hitButton);
         this.activate(this.stayButton);
-        document.getElementById('output').innerHTML = "";
         this.bank.bet();
         this.disable();
     };
@@ -154,6 +167,7 @@ var BlackJack = (function () {
             win = true;
             this.deactivate(document.getElementById('hitButton_' + this.curHand));
             this.deactivate(document.getElementById('stayButton_' + this.curHand));
+            this.deactivate(document.getElementById('splitButton_' + this.curHand));
             var outputtext = "";
             if (allPlayers.getPlayer(i).score() > 21) {
                 win = false;
@@ -189,7 +203,11 @@ var BlackJack = (function () {
         this.deactivate(this.newGameButton);
     };
     BlackJack.prototype.enable = function () {
+        this.bank.update();
         this.bank.enable();
+        if (this.bank.bankRoll <= 0) {
+            this.bank.disable();
+        }
         this.activate(this.newGameButton);
     };
     BlackJack.prototype.addPlayer = function () {
@@ -199,36 +217,60 @@ var BlackJack = (function () {
         allPlayers.getPlayer(this.numOfUserHands).addCard(newCard);
         game.bank.bet();
         this.insertNewHand(this.numOfUserHands);
-        this.updateUI();
     };
     BlackJack.prototype.insertNewHand = function (id) {
-        var newHandWrapper = document.createElement('div');
-        newHandWrapper.setAttribute('id', 'handWrapper_' + id);
-        newHandWrapper.setAttribute('class', 'handWrapperClass');
-        document.getElementById('usercards').appendChild(newHandWrapper);
-        var newUserScore = document.createElement('p');
-        newUserScore.setAttribute('id', 'userscore' + id);
-        newHandWrapper.appendChild(newUserScore);
-        this.usercards[id] = document.createElement('span');
-        this.usercards[id].setAttribute('id', 'hand_' + id);
-        this.usercards[id].innerHTML = "";
-        newHandWrapper.appendChild(this.usercards[id]);
-        var buttonWrapper = document.createElement('div');
-        buttonWrapper.setAttribute('id', 'buttonWrapper_' + id);
-        buttonWrapper.setAttribute('class', 'playerButtons');
-        newHandWrapper.appendChild(buttonWrapper);
-        var hitButton = document.createElement('button');
-        hitButton.setAttribute('id', 'hitButton_' + id);
-        hitButton.setAttribute('onclick', 'game.hitThat();');
-        hitButton.setAttribute('class', 'btn active');
-        hitButton.innerHTML = "Hit";
-        var stayButton = document.createElement('button');
-        stayButton.setAttribute('id', 'stayButton_' + id);
-        stayButton.setAttribute('onclick', 'game.stayThere();');
-        stayButton.setAttribute('class', 'btn active');
-        stayButton.innerHTML = "Stay";
-        buttonWrapper.appendChild(hitButton);
-        buttonWrapper.appendChild(stayButton);
+        if (id > 4) {
+            alert("Whoops! You can only have a maximum of 6 hands during one round.");
+            this.deactivate(document.getElementById('splitButton_' + this.curHand));
+            --this.numOfUserHands;
+        }
+        else if (this.bank.bankRoll < this.bank.wager && id > 1) {
+            alert("Uh Oh! You do not have enough money to split your hand.");
+            this.deactivate(document.getElementById('splitButton_' + this.curHand));
+            --this.numOfUserHands;
+        }
+        else {
+            var newHandWrapper = document.createElement('div');
+            newHandWrapper.setAttribute('id', 'handWrapper_' + id);
+            newHandWrapper.setAttribute('class', 'handWrapperClass');
+            document.getElementById('usercards').appendChild(newHandWrapper);
+            var newUserScore = document.createElement('p');
+            newUserScore.setAttribute('id', 'userscore' + id);
+            newHandWrapper.appendChild(newUserScore);
+            this.usercards[id] = document.createElement('span');
+            this.usercards[id].setAttribute('id', 'hand_' + id);
+            this.usercards[id].innerHTML = "";
+            newHandWrapper.appendChild(this.usercards[id]);
+            var buttonWrapper = document.createElement('div');
+            buttonWrapper.setAttribute('id', 'buttonWrapper_' + id);
+            buttonWrapper.setAttribute('class', 'playerButtons');
+            newHandWrapper.appendChild(buttonWrapper);
+            var hitButton = document.createElement('button');
+            hitButton.setAttribute('id', 'hitButton_' + id);
+            hitButton.setAttribute('onclick', 'game.hitThat();');
+            hitButton.setAttribute('class', 'btn active');
+            hitButton.innerHTML = "Hit";
+            var stayButton = document.createElement('button');
+            stayButton.setAttribute('id', 'stayButton_' + id);
+            stayButton.setAttribute('onclick', 'game.stayThere();');
+            stayButton.setAttribute('class', 'btn active');
+            stayButton.innerHTML = "Stay";
+            var splitButton = document.createElement('button');
+            splitButton.setAttribute('id', 'splitButton_' + id);
+            splitButton.setAttribute('onclick', 'game.addPlayer();');
+            splitButton.setAttribute('class', 'btn active');
+            splitButton.innerHTML = "Split";
+            buttonWrapper.appendChild(hitButton);
+            buttonWrapper.appendChild(stayButton);
+            buttonWrapper.appendChild(splitButton);
+            if (id > 1) {
+                this.hitThat();
+                this.deactivate(document.getElementById('hitButton_' + id));
+                this.deactivate(document.getElementById('stayButton_' + id));
+                this.deactivate(document.getElementById('splitButton_' + id));
+                this.updateUI();
+            }
+        }
     };
     return BlackJack;
 })();
