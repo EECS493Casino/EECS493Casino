@@ -6,19 +6,18 @@ $(function(){
 	});
 });
 
-
+var cheatsOn = true;
 
 
 var cheats = function() {
 	var x = document.getElementById("myonoffswitch").checked;
 	if(x == true)
 	{
-		//cheats on 
-		// window.alert("cheats on");
+		cheatsOn = true;
 	}	
 	else
 	{
-		//cheats off 
+		cheatsOn = false;
 	}	
     
 }

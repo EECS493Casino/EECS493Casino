@@ -377,6 +377,10 @@ var gameSettings = (function () {
         var _this = this;
         this.cheatsOn = cheats;
         this.cheatToggleButton = document.getElementById(cheatButonId);
+        if (this.cheatsOn)
+            this.cheatToggleButton.innerHTML = "Cheats: ON";
+        else
+            this.cheatToggleButton.innerHTML = "Cheats: OFF";
         this.cheatToggleButton.addEventListener('click', function (event) {
             _this.cheatsOn = !_this.cheatsOn;
             if (_this.cheatsOn)
@@ -477,7 +481,7 @@ var PlayerContainer = (function () {
 /// <reference path="./gameSettings.ts"/>
 /// <reference path="./jquery.d.ts"/>
 /// <reference path="./blackjack.ts"/>
-var settings = new gameSettings(false, 'cheatToggle');
+var settings = new gameSettings(cheatsOn, 'cheatToggle');
 var deck = new Deck();
 var allPlayers = new PlayerContainer();
 allPlayers.addPlayer('user');
