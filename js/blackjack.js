@@ -408,6 +408,7 @@ var gameSettings = (function () {
             this.cheatToggleButton.innerHTML = "Cheats: OFF";
         this.cheatToggleButton.addEventListener('click', function (event) {
             _this.cheatsOn = !_this.cheatsOn;
+            cheatsOn = !cheatsOn;
             if (_this.cheatsOn)
                 _this.cheatToggleButton.innerHTML = "Cheats: ON";
             else

@@ -11,6 +11,7 @@ class gameSettings{
             this.cheatToggleButton.innerHTML = "Cheats: OFF";
         this.cheatToggleButton.addEventListener('click', (event): void =>{
             this.cheatsOn = !this.cheatsOn;
+            cheatsOn = !cheatsOn;
             if (this.cheatsOn)
                 this.cheatToggleButton.innerHTML = "Cheats: ON";
             else
