@@ -168,15 +168,6 @@ function updateUI()
  }
 
 
-/* initGame()
- * Used to initialize the game. Make sure that this function is
- * called before the others in order to get more defined behavior.
- */
-function initGame(){
-    loadCards();
-    startRound();
-}
-
 /* resetCpuCards()
  * This function conceals all cpu cards. It sets the "flipped"
  * status of each cpu card to "false" and 
@@ -203,6 +194,7 @@ function toggleCheating(){
 		cheatingAllowed = true;
 		document.getElementById("cheatbutton").innerHTML = "Turn Cheating Off";
 	}
+    return;
 }
 
 function clickCard(x){
@@ -257,9 +249,9 @@ function flipCard(elementId, cardNumber)
 function clickCpuCard(x){
     var elementId = "cpu_card".concat(x.toString());
     console.log("you clicked ".concat(elementId.toString()));
-    if(cheatingAllowed)
+    if(cheatingAllowed && cardsLoaded)
     {
-        var cardNumber = cpuHand[x];
+        var cardNumber = cpuHand[x-1];
         flipCard(elementId,cardNumber);
     }
 }
