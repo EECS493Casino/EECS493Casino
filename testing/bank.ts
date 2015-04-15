@@ -2,6 +2,7 @@
 declare function initBankSlider(slider: JQuery, bank: Bank);
 declare function disableSlider(slider: JQuery);
 declare function enableSlider(slider: JQuery);
+declare function updateSliderValues(slider: JQuery, bank: Bank);
 
 class Bank {
 	wager: number;
@@ -26,6 +27,8 @@ class Bank {
 
 	bet() {
 		this.bankRoll -= this.wager;
+		if (this.bankRoll < 0)
+			this.bankRoll = 0;
 		this.updateBankRollView();
 	}
 
@@ -58,5 +61,9 @@ class Bank {
 	
 	enable() {
 		enableSlider(this.slider);
+	}
+	
+	update() {
+		updateSliderValues(this.slider, this);
 	}
 }
