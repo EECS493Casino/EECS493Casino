@@ -180,7 +180,7 @@ function resetCpuCards(){
     for (var i = 1; i <= 5; i++)
     {
         var elementId = "cpu_card".concat(i.toString());
-        var cardNumber = cpuHand[i];
+        var cardNumber = cpuHand[i-1];
         cards[cardNumber].flipped = false;
         document.getElementById(elementId).src = "testing/images/back_of_card.png";
     }
