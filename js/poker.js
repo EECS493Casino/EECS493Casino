@@ -166,7 +166,7 @@ function updateUI()
     document.getElementById("foldbutton").disabled = true;
     document.getElementById("log").innerHTML = "";//clear log
     document.getElementById("log").innerHTML += "Starting new round...";
-    document.getElementById("log").innerHTML += "\nYou may open or check";
+    document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
  }
 
 
@@ -302,7 +302,7 @@ function playeropen(){
         bet = 0;
     winnings = winnings-bet;
     updateUI();
-    document.getElementById("log").innerHTML += "\nYou opened at $" + bet;
+    document.getElementById("log").innerHTML += ("\nYou opened at " + bet);
     cpuTakesTurn("open",bet);
 }
 
