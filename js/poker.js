@@ -339,7 +339,7 @@ function raise(){
 }
 
 function fold(){
-    document.getElementById("You foldedm the CPU gets the pot!").innerHTML += "\n";
+    document.getElementById("log").innerHTML += "\nYou folded the CPU gets the pot!";
     $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
