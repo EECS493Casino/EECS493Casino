@@ -299,7 +299,7 @@ footer{
 .levelswitch-inner:before {
     content: "EASY";
     padding-left: -1px;
-    background-color: #34A7C1; color: #FFFFFF;
+    background-color: #EEEEEE; color: #999999;
 }
 .levelswitch-inner:after {
     content: "HARD";

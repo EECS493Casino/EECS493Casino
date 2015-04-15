@@ -30,11 +30,12 @@ var level = function(input){
 	if(x == true)
 	{
 		//easy
-		//window.alert("easy");
+		window.alert("Difficulty feature not implemented yet.");
 	}
 	else
 	{
 		//difficult
+		window.alert("Difficulty feature not implemented yet.");
 	}
 
 }
