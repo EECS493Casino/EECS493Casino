@@ -8,6 +8,10 @@ $(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('#content').load("home.html");
+});
+
 var cheatsOn = false;
 
 var cheats = function() {

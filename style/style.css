@@ -141,6 +141,11 @@
     color:#ffffff;
 }
 
+.btn-lg{
+	display: block;
+	margin: auto;
+}
+
 body{
     background-image: url("../images/casino_background.jpg");
 	background-repeat: no-repeat;
