@@ -1,119 +1,26 @@
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Poker</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/full-width-pics.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body >
-     <img class="img-responsive img-center" id ="bg" src="images/slots_background.jpg"alt="background">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Rain Man Casino</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">     
-                    <li>
-                        <span><img class="little left" src="images/ace_of_spades2.png" alt=""></span>
-                    </li>                   
-                    <li>
-                        <a id="home" href="index.html">Home</a>
-
-                    </li>
-                    <li>
-                        <span><img class="little left" src="images/ace_of_hearts.png" alt=""></span>
-                    </li>
-                    <li>
-                         <a id="about" href="about.html">About</a>
-                    </li>
-                     <li>
-                        <span><img class="little left" src="images/ace_of_clubs.png" alt=""></span>
-                    </li>
-                    <li>
-                        <a id="help" href="help.html">Help</a>
-                    </li>
-                    <li>
-                        <span><img class="little left" src="images/ace_of_diamonds.png" alt=""></span>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Full Width Image Header with Logo -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
- <!--    <header class="image-bg-fluid-height">
-        <img class="img-responsive img-center" src="images/aces_on_table.jpg" alt="">
-    </header> -->
-
-    <!-- Content Section -->
-   <section class="text-center">    
-        <div class="container" id="content">
-        <div class="row">
-        <div class="col-lg-12 text-center main">
+<div class="row">
+    <div class="col-lg-12 text-center main">
         <h1 class="section-heading ">Poker</h1>
         <!-- Fixed Height Image Aside -->
         <!-- Image backgrounds are set within the full-width-pics.css file. -->
         <img class="img-responsive img-center" src="images/table_background.jpg" alt="Blackjack table">
-        </br>
-        </br>
-        </br>
-
 
         <table id="gameWrapper">
 
             <tr><td>
-    
-                    <h1>Poker Card Game</h1>
 
-                    <script type="text/javascript" src="poker.js"></script>
+                   <script type="text/javascript" src="js/poker.js"></script>
 
-                    <h2>Pot: 
-                        <p id="pot"></p>
-                    </h2>
+                    <div id="potBg"><p class="bankAmounts">Pot</p><p>$<span id="pot">0</span></p></div>
+                    <div id="winningsBg"><p class="bankAmounts">Winnings</p><p>$<span id="winnings">0</span></p></div>
 
-                    <h2>Winnings: 
-                        <p id="winnings"></p>
-                    </h2>
 
                     <!--Buttons-->
                     <button id="cheatbutton" type="button" onclick="toggleCheating()">Toggle Cheating</button>
 
 
-                    <!--**********************************************************************-->
+                    <!--************************************************************-->
                     <table style="width:100%">
 
                         <!--LEFT COLUMN CONTENT-->
@@ -133,45 +40,39 @@
                             <h3>CPU's Hand</h3>
                             <table style="width:100%">
                             <tr>
-                                <td><img  id="cpu_card1" onclick="clickCpuCard(1)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="cpu_card2" onclick="clickCpuCard(2)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="cpu_card3" onclick="clickCpuCard(3)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="cpu_card4" onclick="clickCpuCard(4)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="cpu_card5" onclick="clickCpuCard(5)" src="testing/images/back_of_card.png" height="108" width="75"></td>
+                                <td><img  id="cpu_card1" onclick="clickCpuCard(1)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="cpu_card2" onclick="clickCpuCard(2)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="cpu_card3" onclick="clickCpuCard(3)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="cpu_card4" onclick="clickCpuCard(4)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="cpu_card5" onclick="clickCpuCard(5)" src="testing/images/back_of_card.png" height="121" width="82"></td>
                             </tr>
                             </table>
                             <!--Cards for human player-->
                             <h3>Your Hand</h3>
                             <table style="width:100%">
                             <tr>
-                                <td><img  id="hum_card1" onclick="clickCard(1)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="hum_card2" onclick="clickCard(2)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="hum_card3" onclick="clickCard(3)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="hum_card4" onclick="clickCard(4)" src="testing/images/back_of_card.png" height="108" width="75"></td>
-                                <td><img  id="hum_card5" onclick="clickCard(5)" src="testing/images/back_of_card.png" height="108" width="75"></td>
+                                <td><img  id="hum_card1" onclick="clickCard(1)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="hum_card2" onclick="clickCard(2)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="hum_card3" onclick="clickCard(3)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="hum_card4" onclick="clickCard(4)" src="testing/images/back_of_card.png" height="121" width="82"></td>
+                                <td><img  id="hum_card5" onclick="clickCard(5)" src="testing/images/back_of_card.png" height="121" width="82"></td>
                             </tr>
                             </table>
                         <td>
                     </table>
-                    <!--**********************************************************************-->
+                    <!--************************************************************-->
 
             </td></tr>
 
         </table>
 
-        </div>
-        </div>              
-        </div>
+<!-- jQuery -->
+<!-- <script src="js/jquery.js"></script> -->
 
-    </section>
+<!-- Bootstrap Core JavaScript -->
+<!-- <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script> -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-
-</body>
-
-</html>
+    </div>
+</div>
