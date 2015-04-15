@@ -160,11 +160,12 @@ function updateUI()
     document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     resetCpuCards();
     updateUI();
+    document.getElementById("startbutton").disabled = true;
     document.getElementById("openbutton").disabled = false;
     document.getElementById("checkbutton").disabled = false;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
-    document.getElementById("log").innerHTML = "";//clear log
+    //document.getElementById("log").innerHTML = "";//clear log
     document.getElementById("log").innerHTML += "Starting new round...";
     document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
  }
@@ -343,7 +344,11 @@ function fold(){
     $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
-    startRound();
+    document.getElementById("startbutton").disabled = true;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
 }
 
 
@@ -374,7 +379,7 @@ function cpuChecks()
 
 function cpuRaises(amount)
 {
-    document.getElementById("log").innerHTML += "\nCPU raises ".concat(amount.toString());
+    document.getElementById("log").innerHTML += "\nThe CPU raises ".concat(amount.toString());
     pot += parseInt(amount);
     updateUI();
     exposeAndCompareHands();
@@ -386,7 +391,11 @@ function cpuFolds()
     winnings += parseInt(pot);
     pot = 0;
     updateUI();
-    startRound();
+    document.getElementById("startbutton").disabled = true;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
 }
 
 function cpuTakesTurn(previousAction,value)
@@ -467,6 +476,7 @@ function getHandValue(hand)
         else{}
     }
 
+    document.getElementById("startbutton").disabled = true;
 }
 
 $(document).ready(function(){
