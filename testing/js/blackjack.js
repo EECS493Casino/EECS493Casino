@@ -93,12 +93,16 @@ var BlackJack = (function () {
             dealtCard.setHidden(false);
             allPlayers.getPlayer(this.curHand).addCard(dealtCard);
             this.updateUI();
-            if (allPlayers.getPlayer(this.curHand).score() > 21)
+            if (allPlayers.getPlayer(this.curHand).score() > 21) {
                 this.stayThere();
+                document.getElementById('userscore' + this.curHand).innerHTML = "You bust.";
+            }
         }
     };
     BlackJack.prototype.stayThere = function () {
         if (this.curHand < this.numOfUserHands) {
+            this.deactivate(document.getElementById('hitButton_' + this.curHand));
+            this.deactivate(document.getElementById('stayButton_' + this.curHand));
             ++this.curHand;
         }
         else if (this.stayButton.className == "btn active") {
@@ -126,46 +130,58 @@ var BlackJack = (function () {
     };
     BlackJack.prototype.endGame = function () {
         var win;
-        win = true;
-        this.deactivate(document.getElementById('hitButton_' + this.curHand));
-        this.deactivate(document.getElementById('stayButton_' + this.curHand));
+        var didNotBust = false;
+        var bestScore = 0;
         allPlayers.getPlayer(0).revealAllCards();
         this.updateUI();
-        var outputtext = "";
-        if (allPlayers.getPlayer(1).score() > 21) {
-            win = false;
-            outputtext = "you bust";
+        for (var i = 1; i <= this.numOfUserHands; ++i) {
+            if (allPlayers.getPlayer(i).score() <= 21) {
+                if (bestScore < allPlayers.getPlayer(i).score())
+                    bestScore = allPlayers.getPlayer(i).score();
+                didNotBust = true;
+            }
         }
-        else {
-            while (allPlayers.getPlayer(0).score() < 15 &&
-                allPlayers.getPlayer(0).score() <
-                    allPlayers.getPlayer(1).score()) {
+        if (didNotBust) {
+            while (allPlayers.getPlayer(0).score() < 15
+                && allPlayers.getPlayer(0).score() < bestScore) {
                 var dealtCard = deck.deal();
                 dealtCard.setHidden(false);
                 allPlayers.getPlayer(0).addCard(dealtCard);
             }
             this.updateUI();
-            if (allPlayers.getPlayer(0).score() > 21) {
-                outputtext = "dealer busts, you win";
-            }
-            else if (allPlayers.getPlayer(1).hand.length > 4) {
-                outputtext = "My but what a large hand you have, you win.";
+        }
+        for (var i = 1; i <= this.numOfUserHands; ++i) {
+            win = true;
+            this.deactivate(document.getElementById('hitButton_' + this.curHand));
+            this.deactivate(document.getElementById('stayButton_' + this.curHand));
+            var outputtext = "";
+            if (allPlayers.getPlayer(i).score() > 21) {
+                win = false;
+                outputtext = "you bust";
             }
             else {
-                if (allPlayers.getPlayer(0).score() >=
-                    allPlayers.getPlayer(1).score()) {
-                    win = false;
-                    outputtext = "dealer wins";
+                if (allPlayers.getPlayer(0).score() > 21) {
+                    outputtext = "dealer busts, you win";
+                }
+                else if (allPlayers.getPlayer(i).hand.length > 4) {
+                    outputtext = "My but what a large hand you have, you win.";
                 }
                 else {
-                    outputtext = "you win!";
+                    if (allPlayers.getPlayer(0).score() >=
+                        allPlayers.getPlayer(i).score()) {
+                        win = false;
+                        outputtext = "dealer wins";
+                    }
+                    else {
+                        outputtext = "you win!";
+                    }
                 }
             }
+            if (win)
+                this.bank.win(1);
+            document.getElementById('userscore' + i).innerHTML = outputtext;
+            console.log(outputtext + 'userscore' + i);
         }
-        if (win)
-            this.bank.win(1);
-        document.getElementById("output").innerHTML =
-            "<p>" + outputtext + "</p>";
         this.enable();
     };
     BlackJack.prototype.disable = function () {

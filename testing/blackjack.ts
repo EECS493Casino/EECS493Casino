@@ -65,7 +65,10 @@ class BlackJack{
 			allPlayers.getPlayer(this.curHand).addCard(dealtCard);
 			// allPlayers.getPlayer(this.curHand).printHand(0);
 			this.updateUI();
-			if (allPlayers.getPlayer(this.curHand).score() > 21) this.stayThere();
+			if (allPlayers.getPlayer(this.curHand).score() > 21) {
+				this.stayThere();
+				document.getElementById('userscore' + this.curHand).innerHTML = "You bust.";
+			}
 		}
 	}
 	stayThere(){
@@ -104,44 +107,57 @@ class BlackJack{
 	}
 	endGame(){
 		var win:boolean;
-		win = true;
-
-		this.deactivate(document.getElementById('hitButton_' + this.curHand));
-		this.deactivate(document.getElementById('stayButton_' + this.curHand));
+		var didNotBust:boolean = false;
+		var bestScore:number = 0;
 		allPlayers.getPlayer(0).revealAllCards();
 		this.updateUI();
-		var outputtext: string = "";
-		if (allPlayers.getPlayer(1).score() > 21) {
-			win = false;
-			outputtext = "you bust";
-		} else {
-			while (allPlayers.getPlayer(0).score() < 15 &&
-					allPlayers.getPlayer(0).score() <
-					allPlayers.getPlayer(1).score()){
-				var dealtCard: Card = deck.deal();
-				dealtCard.setHidden(false);
-				allPlayers.getPlayer(0).addCard(dealtCard);
-			}
-			this.updateUI();
-			if (allPlayers.getPlayer(0).score() > 21) {
-				outputtext = "dealer busts, you win";
-			} else if (allPlayers.getPlayer(1).hand.length > 4) {
-				outputtext = "My but what a large hand you have, you win.";
-			} else {
-				if (allPlayers.getPlayer(0).score() >=
-					allPlayers.getPlayer(1).score()) {
-					win = false;
-					outputtext = "dealer wins";
-				} else {
-					outputtext = "you win!";
-				}
+		for(var i = 1; i <= this.numOfUserHands; ++i) {
+			if (allPlayers.getPlayer(i).score() <= 21) {
+				if (bestScore < allPlayers.getPlayer(i).score())
+					bestScore = allPlayers.getPlayer(i).score();
+				didNotBust = true;
 			}
 		}
-		if (win)
-			this.bank.win(1);
-		document.getElementById("output").innerHTML =
-			"<p>" + outputtext + "</p>";
+		if (didNotBust) {
+			while (allPlayers.getPlayer(0).score() < 15 
+					&& allPlayers.getPlayer(0).score() < bestScore){
+					var dealtCard: Card = deck.deal();
+					dealtCard.setHidden(false);
+					allPlayers.getPlayer(0).addCard(dealtCard);
+			}
+			this.updateUI();
+		}
+		for(var i = 1; i <= this.numOfUserHands; ++i) {
+			win = true;
+	
+			this.deactivate(document.getElementById('hitButton_' + this.curHand));
+			this.deactivate(document.getElementById('stayButton_' + this.curHand));
+	
+			var outputtext: string = "";
+			if (allPlayers.getPlayer(i).score() > 21) {
+				win = false;
+				outputtext = "you bust";
+			} else {
+				if (allPlayers.getPlayer(0).score() > 21) {
+					outputtext = "dealer busts, you win";
+				} else if (allPlayers.getPlayer(i).hand.length > 4) {
+					outputtext = "My but what a large hand you have, you win.";
+				} else {
+					if (allPlayers.getPlayer(0).score() >=
+						allPlayers.getPlayer(i).score()) {
+						win = false;
+						outputtext = "dealer wins";
+					} else {
+						outputtext = "you win!";
+					}
+				}
+			}
+			if (win)
+				this.bank.win(1);
 
+			document.getElementById('userscore' + i).innerHTML = outputtext;
+			console.log(outputtext + 'userscore' + i);
+		}
 		this.enable();
 	}
 	
