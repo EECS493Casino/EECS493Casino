@@ -1,9 +1,4 @@
-<!-- /*!
- * Start Bootstrap - Full Width Pics HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-  -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,15 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rain Man Casino</title>
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-	<link href="style/style.css" rel="stylesheet">
+    <title>Poker</title>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -39,11 +27,9 @@
 
 </head>
 
-<body>
-
+<body >
+     <img class="img-responsive img-center" id ="bg" src="images/slots_background.jpg"alt="background">
     <!-- Navigation -->
-
-    
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,8 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
-                <span class="navbar-brand none" style="color:white"><b>Rain Man Casino</b></span>
+                <a class="navbar-brand" href="#">Rain Man Casino</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,20 +49,20 @@
                         <span><img class="little left" src="images/ace_of_spades2.png" alt=""></span>
                     </li>                   
                     <li>
-                        <a class="links button_link" id="home" href="#"><b>Home</b></a>
+                        <a id="home" href="index.html">Home</a>
 
                     </li>
                     <li>
                         <span><img class="little left" src="images/ace_of_hearts.png" alt=""></span>
                     </li>
                     <li>
-                         <a id="about" class=" button_link" href="#" ><b>About</b></a>
+                         <a id="about" href="about.html">About</a>
                     </li>
                      <li>
                         <span><img class="little left" src="images/ace_of_clubs.png" alt=""></span>
                     </li>
                     <li>
-                        <a id="help" class=" button_link" href="#" ><b>Help</b></a>
+                        <a id="help" href="help.html">Help</a>
                     </li>
                     <li>
                         <span><img class="little left" src="images/ace_of_diamonds.png" alt=""></span>
@@ -89,60 +74,64 @@
         <!-- /.container -->
     </nav>
 
+    <!-- Full Width Image Header with Logo -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+ <!--    <header class="image-bg-fluid-height">
+        <img class="img-responsive img-center" src="images/aces_on_table.jpg" alt="">
+    </header> -->
 
     <!-- Content Section -->
-    <section>
-                <img class="img-responsive img-center" id ="bg" src="images/casino_background.jpg"alt="background">
-
-                <!-- Here we load the pages with javascript  -->
-                <!-- Functions defined in main.js -->
-        <div class="container" id="content">
+     <section class="text-center">    
+         <div class="container" id="content">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1 class="section-heading">Rain Man Casino</h1>
-                </br>
-            </br>
-                   <!--  Our menu buttons -->
-                   <table class="button-table center-table" style="width:100%">
-			<!-- 		  <tr>
-						<td><button id="home" class="button_link btn-lg btn btn-primary">Home</button></td>
-						<td><button id="about" class="button_link btn-lg btn btn-primary">About</button></td>
-					  </tr> -->
-					  <tr>
-					    <td><button id="blackjack" class="button_link btn-lg btn">Blackjack</button></td>
-						<td><button id="poker" class="button_link btn-lg btn">Poker</button></td>
-					  </tr>	
-					</table>	
-
-					<table class="button-table" style="width:100%">
-						<tr>
-					  	<td><button id="options" class="button_link btn-lg btn">Options</button></td>					
-					  	<td><button id="help" class="button_link btn-lg btn">Help</button></td>
-					</table>	                    
-                        <!-- Fixed Height Image Aside -->
+                <div class="col-lg-12 text-center main">
+                    <h1 class="section-heading ">Poker</h1>
+   <!-- Fixed Height Image Aside -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
+                <!-- <img class="img-responsive img-center" src="images/table_background.jpg" alt="Blackjack table"> -->
+      
+            </div>              
+        </div>
+    </div>
+</div>
+   </section>
+
+
+
+    <!-- Content Section -->
+<!--     <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-heading">Section Heading</h1>
+                    <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
                 </div>
             </div>
+            <!-- /.row -->
         </div>
-    </section>
-
-
-
-
-   
+        <!-- /.container -->
+    </section> 
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row ">
+            <div class="row">
                 <div class="col-lg-12">
-                    <span class="foot">Copyright &copy; Rain Man Casino</span>
+                    <p>Copyright &copy; Rain Man Casino</p>
                 </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /.container -->
     </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 

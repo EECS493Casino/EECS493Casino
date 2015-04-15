@@ -1,0 +1,162 @@
+   
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Options</title>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/full-width-pics.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body >
+     <img class="img-responsive img-center" id ="bg" src="images/casino2_background.jpg"alt="background">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                  <span class="navbar-brand none" style="color:white"><b>Rain Man Casino</b></span>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">     
+                      <li>
+                        <span><img class="little left" src="images/ace_of_spades2.png" alt=""></span>
+                    </li>                   
+                    <li>
+                        <a class="links" id="home" href="index.html"><b>Home</b></a>
+
+                    </li>
+                    <li>
+                        <span><img class="little left" src="images/ace_of_hearts.png" alt=""></span>
+                    </li>
+                    <li>
+                         <a id="about" href="about.html" ><b>About</b></a>
+                    </li>
+                     <li>
+                        <span><img class="little left" src="images/ace_of_clubs.png" alt=""></span>
+                    </li>
+                    <li>
+                        <a id="help" href="help.html" ><b>Help</b></a>
+                    </li>
+                    <li>
+                        <span><img class="little left" src="images/ace_of_diamonds.png" alt=""></span>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Width Image Header with Logo -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+ <!--    <header class="image-bg-fluid-height">
+        <img class="img-responsive img-center" src="images/aces_on_table.jpg" alt="">
+    </header> -->
+
+    <!-- Content Section -->
+
+   <section class="text-center"> 	
+         <div class="container" id="content">
+            <div class="row">
+                <div class="col-lg-12 text-center main">
+                    <h1 class="section-heading ">Options</h1>
+                <table class="button-table center-table" style="width:50%">
+					<tr>
+						<td><h3>Allow Cheats:</h3></td>     
+   					<td> </br><div class="onoffswitch text-center">
+	                <div>
+					    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" onchange="cheats()"id="myonoffswitch" checked>
+					    <label class="onoffswitch-label" for="myonoffswitch"> 
+					        <span class="onoffswitch-inner"></span>
+					        <span class="onoffswitch-switch"></span>
+					    </label>
+					</div></div></td>
+					</tr>
+					<tr> 
+						<td><h3>AI Level:</h3></td>  
+                        <td> </br><div class="levelswitch text-center">
+                        <div>
+                            <input type="checkbox" name="levelswitch" class="levelswitch-checkbox" onchange="level()"id="levelswitch" checked>
+                            <label class="levelswitch-label" for="levelswitch"> 
+                                <span class="levelswitch-inner"></span>
+                                <span class="levelswitch-switch"></span>
+                            </label>
+                        </div></div></td>
+					
+					</tr>
+                        <tr> 
+                        <td><h3>Music:</h3></td>  
+                        <td> </br><div class="musicswitch text-center">
+                        <div>
+                            <input type="checkbox" name="musicswitch" class="musicswitch-checkbox" onchange="music()"id="musicswitch" checked>
+                            <label class="musicswitch-label" for="musicswitch"> 
+                                <span class="musicswitch-inner"></span>
+                                <span class="musicswitch-switch"></span>
+                            </label>
+                        </div></div></td>
+                    
+                    </tr>
+				</table>	
+			</div>			    
+	    </div>
+	</div>
+ </section>
+
+
+
+<!--     <!-- Footer -->
+   <!--  <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                     <span class="foot">Copyright &copy; Rain Man Casino</span>
+                </div>
+            </div>
+  
+        </div>
+
+    </footer>  -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() { updateCheatsVar(); });
+    </script>
+
+</body>
+
+</html>
+   
+
+

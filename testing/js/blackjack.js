@@ -194,7 +194,6 @@ var BlackJack = (function () {
             if (win)
                 this.bank.win(1);
             document.getElementById('userscore' + i).innerHTML = outputtext;
-            console.log(outputtext + 'userscore' + i);
         }
         this.enable();
     };
@@ -220,7 +219,7 @@ var BlackJack = (function () {
     };
     BlackJack.prototype.insertNewHand = function (id) {
         if (id > 4) {
-            alert("Whoops! You can only have a maximum of 6 hands during one round.");
+            alert("Whoops! You can only have a maximum of 4 hands during one round.");
             this.deactivate(document.getElementById('splitButton_' + this.curHand));
             --this.numOfUserHands;
         }
