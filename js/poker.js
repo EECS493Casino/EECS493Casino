@@ -385,7 +385,7 @@ function cpuOpens()
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
     updateUI();
-    document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may raise (bet the equivalent or higher) or fold (quit).";
+    document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may RAISE (bet the equivalent or higher) or FOLD (quit).";
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = false;
@@ -405,7 +405,7 @@ function cpuChecks()
 
 function cpuRaises(amount)
 {
-    document.getElementById("log").innerHTML += "\nThe CPU raises ".concat(amount.toString());
+    document.getElementById("log").innerHTML += "\nThe CPU raises $".concat(amount.toString()) + ". THe pot now contains $" + pot ;
     pot += parseInt(amount);
     updateUI();
     exposeAndCompareHands();
