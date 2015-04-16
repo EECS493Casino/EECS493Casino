@@ -311,8 +311,10 @@ function playeropen(){
         bet = prompt("Please enter your bet", 100);
         if (bet != null)
             pot += parseInt(bet);
-        if(bet <= 0)
+        if(bet <= 0){
             alert("Your bet must be greater than 0!");
+            bet = null;
+        }
         if(bet == null)
             alert("Your must bet!");
     }  
