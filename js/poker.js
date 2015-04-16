@@ -1,5 +1,4 @@
 var cardsLoaded = false;
-var cheatingAllowed = false;
 var pot = 0;
 var winnings = 500;
 var cpuBet = 0;
@@ -156,7 +155,7 @@ function updateUI()
     cpuHand = [];
     dealFiveEach();
     pot = 0;
-    cheatingAllowed = false;
+    cheatsOn = false;
     document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     resetCpuCards();
     updateUI();
@@ -201,16 +200,16 @@ function resetCpuCards(){
 
 function toggleCheating(){
     document.getElementById("log").innerHTML += "\n";
-	if(cheatingAllowed == true)
+	if(cheatsOn == true)
 	{
         resetCpuCards();
-		cheatingAllowed = false;
+		cheatsOn = false;
         document.getElementById("log").innerHTML += "\n";
 		document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
 	}
 	else
 	{
-		cheatingAllowed = true;
+		cheatsOn = true;
         document.getElementById("log").innerHTML += "\n";
 		document.getElementById("cheatbutton").innerHTML = "Turn Cheating Off";
 	}
@@ -269,7 +268,7 @@ function flipCard(elementId, cardNumber)
 function clickCpuCard(x){
     var elementId = "cpu_card".concat(x.toString());
     console.log("you clicked ".concat(elementId.toString()));
-    if(cheatingAllowed && cardsLoaded)
+    if(cheatsOn && cardsLoaded)
     {
         var cardNumber = cpuHand[x-1];
         flipCard(elementId,cardNumber);
@@ -526,4 +525,6 @@ $(document).ready(function(){
     document.getElementById("checkbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
+
+    document.getElementById("cheatbutton").className = "btn active";
 });
