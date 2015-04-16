@@ -173,10 +173,10 @@ function updateUI()
     document.getElementById("raisebutton").className = "btn disabled";
 
     document.getElementById("foldbutton").disabled = true;
-    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 
     //document.getElementById("log").innerHTML = "";//clear log
-    document.getElementById("log").innerHTML += "Starting new round...";
+    document.getElementById("log").innerHTML += "\nStarting new round...";
     document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
  }
 
@@ -515,4 +515,15 @@ function getHandValue(hand)
 
 $(document).ready(function(){
     //this is called when the page loads
+    document.getElementById("startbutton").disabled = false;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+    
+    document.getElementById("startbutton").className = "btn active";
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 });
