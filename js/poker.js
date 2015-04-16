@@ -126,6 +126,8 @@ function updateUI()
         document.getElementById(elementId).src = sourceString;
     }
 
+    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
+
     // for(var i=0; i<5; i++)
     // {
     //     var x = i+1;
@@ -158,7 +160,6 @@ function updateUI()
     cheatsOn = false;
     document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     resetCpuCards();
-    updateUI();
     document.getElementById("startbutton").disabled = true;
     document.getElementById("startbutton").className = "btn disabled";
 
@@ -177,6 +178,7 @@ function updateUI()
     //document.getElementById("log").innerHTML = "";//clear log
     document.getElementById("log").innerHTML += "\nStarting new round...";
     document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
+    updateUI();
  }
 
 
@@ -324,7 +326,6 @@ function playeropen(){
     winnings = winnings-bet;
     updateUI();
     document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
-    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
     cpuTakesTurn("open",bet);
 }
 
@@ -332,6 +333,7 @@ function playeropen(){
 function check(){
     console.log("the user checks");
     document.getElementById("log").innerHTML += "\nYou checked.";
+    updateUI();
     cpuTakesTurn("check",0);
 }
 
@@ -360,15 +362,14 @@ function raise(){
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 
-    updateUI();
-    document.getElementById("log").innerHTML += "\nYou raised $" + bet;
-    exposeAndCompareHands();
 
+    document.getElementById("log").innerHTML += "\nYou raised $" + bet;
+    updateUI();
+    exposeAndCompareHands();
 }
 
 function fold(){
     document.getElementById("log").innerHTML += "\nYou folded the CPU gets the pot!";
-    $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
     document.getElementById("startbutton").disabled = false;
@@ -396,7 +397,6 @@ function cpuOpens()
     console.log("CPU opens");
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
-    updateUI();
     document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may RAISE (bet the equivalent or higher) or FOLD (quit).";
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
@@ -407,6 +407,7 @@ function cpuOpens()
     document.getElementById("checkbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn active";
     document.getElementById("foldbutton").className = "btn active";
+    updateUI();
 }
 
 function cpuChecks()
@@ -533,6 +534,7 @@ function getHandValue(hand)
 
     document.getElementById("startbutton").disabled = false;
     document.getElementById("startbutton").className = "btn active";
+    updateUI();
 }
 
 $(document).ready(function(){
