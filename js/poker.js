@@ -305,11 +305,17 @@ function clickCpuCard(x){
 
 function playeropen(){
     console.log("the user opens");
-    var bet = prompt("Please enter your bet", 100);
-    if (bet != null)
-        pot += parseInt(bet);
-    else
-        bet = 0;
+    var bet = 0;
+    while(bet != null)
+    {
+        bet = prompt("Please enter your bet", 100);
+        if (bet != null)
+            pot += parseInt(bet);
+        if(bet <= 0)
+            alert("Your bet must be greater than 0!");
+        if(bet == null)
+            alert("Your must bet!");
+    }  
     winnings = winnings-bet;
     updateUI();
     document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
@@ -327,7 +333,7 @@ function raise(){
     var bet = 0;
     while(bet < cpuBet)
     {
-        bet = prompt("What do you raise?", 100);
+        bet = prompt("What do you raise?", cpuBet);
         if (bet == null || isNaN(bet))
         {
             bet = 0;
