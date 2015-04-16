@@ -143,6 +143,11 @@ function updateUI()
     return;
 }
 
+function scrollLog()
+{
+    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
+}
+
 /* startRound()
  * sets up the game for a new round
  */
@@ -324,7 +329,7 @@ function playeropen(){
     winnings = winnings-bet;
     updateUI();
     document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
-    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
+    scrollLog();
     cpuTakesTurn("open",bet);
 }
 
@@ -368,7 +373,6 @@ function raise(){
 
 function fold(){
     document.getElementById("log").innerHTML += "\nYou folded the CPU gets the pot!";
-    $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
     document.getElementById("startbutton").disabled = false;
