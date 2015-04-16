@@ -160,7 +160,6 @@ function updateUI()
     cheatsOn = false;
     document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     resetCpuCards();
-    updateUI();
     document.getElementById("startbutton").disabled = true;
     document.getElementById("startbutton").className = "btn disabled";
 
@@ -179,6 +178,7 @@ function updateUI()
     //document.getElementById("log").innerHTML = "";//clear log
     document.getElementById("log").innerHTML += "\nStarting new round...";
     document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
+    updateUI();
  }
 
 
@@ -397,7 +397,6 @@ function cpuOpens()
     console.log("CPU opens");
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
-    updateUI();
     document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may RAISE (bet the equivalent or higher) or FOLD (quit).";
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
@@ -408,6 +407,7 @@ function cpuOpens()
     document.getElementById("checkbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn active";
     document.getElementById("foldbutton").className = "btn active";
+    updateUI();
 }
 
 function cpuChecks()
@@ -534,6 +534,7 @@ function getHandValue(hand)
 
     document.getElementById("startbutton").disabled = false;
     document.getElementById("startbutton").className = "btn active";
+    updateUI();
 }
 
 $(document).ready(function(){
