@@ -324,6 +324,7 @@ function playeropen(){
     winnings = winnings-bet;
     updateUI();
     document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
+    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
     cpuTakesTurn("open",bet);
 }
 
