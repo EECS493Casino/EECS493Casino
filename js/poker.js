@@ -126,6 +126,8 @@ function updateUI()
         document.getElementById(elementId).src = sourceString;
     }
 
+    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
+
     // for(var i=0; i<5; i++)
     // {
     //     var x = i+1;
@@ -141,11 +143,6 @@ function updateUI()
     // }
 
     return;
-}
-
-function scrollLog()
-{
-    document.getElementById("log").scrollTop = document.getElementById("log").scrollHeight;
 }
 
 /* startRound()
@@ -329,7 +326,6 @@ function playeropen(){
     winnings = winnings-bet;
     updateUI();
     document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
-    scrollLog();
     cpuTakesTurn("open",bet);
 }
 
@@ -337,6 +333,7 @@ function playeropen(){
 function check(){
     console.log("the user checks");
     document.getElementById("log").innerHTML += "\nYou checked.";
+    updateUI();
     cpuTakesTurn("check",0);
 }
 
@@ -365,10 +362,10 @@ function raise(){
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 
-    updateUI();
-    document.getElementById("log").innerHTML += "\nYou raised $" + bet;
-    exposeAndCompareHands();
 
+    document.getElementById("log").innerHTML += "\nYou raised $" + bet;
+    updateUI();
+    exposeAndCompareHands();
 }
 
 function fold(){
