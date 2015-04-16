@@ -4,22 +4,16 @@
     </div>
     <table class="button-table center-table" style="width:100%">
         <tr>
-            <td><button id="blackjack" class="button_link btn-lg btn">Blackjack</button></td>
-            <td><button id="poker" class="button_link btn-lg btn">Poker</button></td>
+            <td><button id="blackjack" class="button_link btn-lg btn" onclick="loadContent(this);">Blackjack</button></td>
+            <td><button id="poker" class="button_link btn-lg btn" onclick="loadContent(this);">Poker</button></td>
         </tr>
     </table>
 
     <table class="button-table" style="width:100%">
         <tr>
-            <td><button id="options" class="button_link btn-lg btn">Options</button></td>
-            <td><button id="help" class="button_link btn-lg btn">Help</button></td>
+            <td><button id="options" class="button_link btn-lg btn" onclick="loadContent(this);">Options</button></td>
+            <td><button id="help" class="button_link btn-lg btn" onclick="loadContent(this);">Help</button></td>
         </tr>
     </table>
 
-    <script>
-    	$(".button_link").click(function(){
-    		$loc = $(this).attr("id") + ".html";
-    		$("#content").load($loc);
-    	});
-    </script>
 </div>

@@ -1,12 +1,10 @@
 
 
-$(function(){
-	$(".button_link").click(function(){
-		$loc = $(this).attr("id") + ".html";
+function loadContent(_this) {
+		$loc = $(_this).attr("id") + ".html";
 		// window.alert($loc);
 		$("#content").load($loc);
-	});
-});
+}
 
 $(document).ready(function(){
 	$('#content').load("home.html");
