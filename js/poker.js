@@ -161,10 +161,20 @@ function updateUI()
     resetCpuCards();
     updateUI();
     document.getElementById("startbutton").disabled = true;
+    document.getElementById("startbutton").className = "btn disabled";
+
     document.getElementById("openbutton").disabled = false;
+    document.getElementById("openbutton").className = "btn active";
+
     document.getElementById("checkbutton").disabled = false;
+    document.getElementById("checkbutton").className = "btn active";
+
     document.getElementById("raisebutton").disabled = true;
+    document.getElementById("raisebutton").className = "btn disabled";
+
     document.getElementById("foldbutton").disabled = true;
+    document.getElementById("raisebutton").className = "btn disabled";
+
     //document.getElementById("log").innerHTML = "";//clear log
     document.getElementById("log").innerHTML += "Starting new round...";
     document.getElementById("log").innerHTML += "\nYou may OPEN or CHECK";
@@ -333,6 +343,12 @@ function raise(){
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
+
     updateUI();
     document.getElementById("log").innerHTML += "\nYou raised $" + bet;
     exposeAndCompareHands();
@@ -344,11 +360,17 @@ function fold(){
     $("#log").html("You folded, the CPU gets the pot");
     pot = 0;
     updateUI();
-    document.getElementById("startbutton").disabled = true;
+    document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("startbutton").className = "btn active";
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 }
 
 
@@ -369,6 +391,11 @@ function cpuOpens()
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = false;
     document.getElementById("foldbutton").disabled = false;
+
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn active";
+    document.getElementById("foldbutton").className = "btn active";
 }
 
 function cpuChecks()
@@ -391,11 +418,17 @@ function cpuFolds()
     winnings += parseInt(pot);
     pot = 0;
     updateUI();
-    document.getElementById("startbutton").disabled = true;
+    document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("startbutton").className = "btn active";
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 }
 
 function cpuTakesTurn(previousAction,value)
@@ -476,7 +509,8 @@ function getHandValue(hand)
         else{}
     }
 
-    document.getElementById("startbutton").disabled = true;
+    document.getElementById("startbutton").disabled = false;
+    document.getElementById("startbutton").className = "btn active";
 }
 
 $(document).ready(function(){
