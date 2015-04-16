@@ -462,7 +462,18 @@ function exposeAndCompareHands(){
     winnings += parseInt(pot);
     pot = 0;
     updateUI();
-    startRound();
+
+    document.getElementById("startbutton").disabled = false;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("startbutton").className = "btn active";
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 }
 
 function getHandValue(hand)
