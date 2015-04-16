@@ -309,14 +309,17 @@ function playeropen(){
     while(bet == null)
     {
         bet = prompt("Please enter your bet", 100);
-        if (bet != null)
-            pot += parseInt(bet);
         if(bet <= 0){
             alert("Your bet must be greater than 0!");
             bet = null;
         }
-        if(bet == null)
+        else if(bet == null){
             alert("Your must bet!");
+        }
+        else if(bet != null){
+            pot += parseInt(bet);
+        }
+        else{}
     }  
     winnings = winnings-bet;
     updateUI();
