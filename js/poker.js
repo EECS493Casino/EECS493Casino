@@ -305,8 +305,8 @@ function clickCpuCard(x){
 
 function playeropen(){
     console.log("the user opens");
-    var bet = 0;
-    while(bet != null)
+    var bet = null;
+    while(bet == null)
     {
         bet = prompt("Please enter your bet", 100);
         if (bet != null)
