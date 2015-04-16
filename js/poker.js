@@ -312,7 +312,7 @@ function playeropen(){
         bet = 0;
     winnings = winnings-bet;
     updateUI();
-    document.getElementById("log").innerHTML += ("\nYou opened at " + bet);
+    document.getElementById("log").innerHTML += ("\nYou opened at $" + bet +". The pot now contains $" + pot);
     cpuTakesTurn("open",bet);
 }
 
