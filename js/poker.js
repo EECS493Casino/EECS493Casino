@@ -512,50 +512,50 @@ function getHandValue(hand)
         else{}
     }
 
-    //FOUR OF A KIND
-    //Four cards of the same rank, and one side card
-    if(fours==1)
-    {
-        return({value:8 , name:"FOUR OF A KIND"});
-    }
+    // //FOUR OF A KIND
+    // //Four cards of the same rank, and one side card
+    // if(fours==1)
+    // {
+    //     return({value:8 , name:"FOUR OF A KIND"});
+    // }
 
-    //FULL HOUSE
-    //Three cards of the same rank, and two cards of a different, matching rank
-    if(threes==1 && pairs==1)
-    {
-        return({value:7 , name:"FULL HOUSE"});
-    }
+    // //FULL HOUSE
+    // //Three cards of the same rank, and two cards of a different, matching rank
+    // if(threes==1 && pairs==1)
+    // {
+    //     return({value:7 , name:"FULL HOUSE"});
+    // }
 
-    //FLUSH
-    //Five cards, same suit
-    var isFlush = false;
-    for(var i=0; i<4; i++)
-    {
-        if(suits[i]==5)
-            isFlush=true;
-    }
-    if(isFlush)
-    {
-        return({value:6 , name:"FLUSH"});
-    }
+    // //FLUSH
+    // //Five cards, same suit
+    // var isFlush = false;
+    // for(var i=0; i<4; i++)
+    // {
+    //     if(suits[i]==5)
+    //         isFlush=true;
+    // }
+    // if(isFlush)
+    // {
+    //     return({value:6 , name:"FLUSH"});
+    // }
 
-    //THREE OF A KIND
-    if(threes==1 and pairs!=1)
-    {
-        return({value:4 , name:"THREE OF A KIND"});
-    }
+    // //THREE OF A KIND
+    // if(threes==1 and pairs!=1)
+    // {
+    //     return({value:4 , name:"THREE OF A KIND"});
+    // }
 
-    //TWO PAIR
-    if(pairs == 2)
-    {
-        return({value:3 , name:"TWO PAIR"});
-    }
+    // //TWO PAIR
+    // if(pairs == 2)
+    // {
+    //     return({value:3 , name:"TWO PAIR"});
+    // }
 
-    //ONE PAIR
-    if(pairs==1 and threes!=1)
-    {
-        return({value:2 , name:"ONE PAIR"});
-    }
+    // //ONE PAIR
+    // if(pairs==1 and threes!=1)
+    // {
+    //     return({value:2 , name:"ONE PAIR"});
+    // }
 
     //default
     return({value:1 , name:"HIGH CARD"});
@@ -590,7 +590,8 @@ function exposeAndCompareHands(){
     {
         var cardNumber = cpuHand[i];
         cards[cardNumber].flipped = false;
-        flipCard("cpu_card"+i,cardNumber);
+        var id = "cpu_card"+i;
+        flipCard(id,cardNumber);
     }
 
     updateUI();
