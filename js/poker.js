@@ -267,7 +267,7 @@ function flipCard(elementId, cardNumber)
 */
 function clickCpuCard(x){
     var elementId = "cpu_card".concat(x.toString());
-    console.log("you clicked ".concat(elementId.toString()));
+    //console.log("you clicked ".concat(elementId.toString()));
     if(cheatsOn && cardsLoaded)
     {
         var cardNumber = cpuHand[x-1];
@@ -304,7 +304,7 @@ function clickCpuCard(x){
 // }
 
 function playeropen(){
-    console.log("the user opens");
+    //console.log("the user opens");
     var bet = null;
     while(bet == null)
     {
@@ -329,7 +329,7 @@ function playeropen(){
 
 
 function check(){
-    console.log("the user checks");
+    //console.log("the user checks");
     document.getElementById("log").innerHTML += "\nYou checked.";
     updateUI();
     cpuTakesTurn("check",0);
@@ -598,8 +598,8 @@ function exposeAndCompareHands(){
     var handValue = getHandValue(playerHand);
     var cpuHandValue = getHandValue(cpuHand);
 
-    console.log(handValue.name);
-    console.log(cpuHandValue.name);
+    document.getElementById("log").innerHTML += ("\nCPU Hand:  " + cpuHandValue.name);
+    document.getElementById("log").innerHTML += ("\nYour Hand: " + handValue.name);
 
     if(handValue.value >= cpuHandValue.value){
         document.getElementById("log").innerHTML += "\nYour hand is better, you get the pot.";
