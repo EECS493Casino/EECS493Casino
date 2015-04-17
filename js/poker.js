@@ -511,7 +511,7 @@ function getHandValue(hand)
             suits[3]++;
         else{}
     }
-/*
+
     //FOUR OF A KIND
     //Four cards of the same rank, and one side card
     if(fours==1)
@@ -556,7 +556,7 @@ function getHandValue(hand)
     {
         return({value:2 , name:"ONE PAIR"});
     }
-*/
+
     //default
     return({value:1 , name:"HIGH CARD"});
 
@@ -574,16 +574,24 @@ function exposeAndCompareHands(){
     console.log(handValue.name);
     console.log(cpuHandValue.name);
 
-    //if(handValue.value >= cpuHandValue.value){
+    if(handValue.value >= cpuHandValue.value){
         document.getElementById("log").innerHTML += "\nYour hand is better, you get the pot.";
         winnings += parseInt(pot);
         pot = 0;
-    //}
-    // else{
-    //     document.getElementById("log").innerHTML += "\nCPU hand is better. You don't get the pot.";
-    //     winnings -= parseInt(pot);
-    //     pot = 0;
-    // }
+    }
+    else{
+        document.getElementById("log").innerHTML += "\nCPU hand is better. You don't get the pot.";
+        winnings -= parseInt(pot);
+        pot = 0;
+    }
+
+    //show cards to player
+    for(var i=0; i<5; i++)
+    {
+        var cardNumber = cpuHand[i];
+        cards[cardNumber].flipped = false;
+        flipCard("cpu_card"+i,cardNumber);
+    }
 
     updateUI();
 
