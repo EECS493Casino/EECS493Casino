@@ -157,8 +157,6 @@ function updateUI()
     cpuHand = [];
     dealFiveEach();
     pot = 0;
-    cheatsOn = false;
-    document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
     resetCpuCards();
     document.getElementById("startbutton").disabled = true;
     document.getElementById("startbutton").className = "btn disabled";
@@ -642,6 +640,12 @@ function exposeAndCompareHands(){
 
 $(document).ready(function(){
     //this is called when the page loads
+
+    if(cheatsOn)
+        document.getElementById("cheatbutton").innerHTML = "Turn Cheating Off";
+    else
+        document.getElementById("cheatbutton").innerHTML = "Turn Cheating On";
+
     document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
