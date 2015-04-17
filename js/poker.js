@@ -1,6 +1,6 @@
 var cardsLoaded = false;
 var pot = 0;
-var winnings = 500;
+var winnings = 0;
 var cpuBet = 0;
 var cards = [];//array of all cards
 var deck = [];
@@ -340,6 +340,7 @@ function check(){
 function call(){
     var bet = cpuBet;
     pot += parseInt(bet);
+    winnings = winnings-bet;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("callbutton").disabled = true;
@@ -372,7 +373,7 @@ function raise(){
             alert("Must be greater than or equal to previous bet, " + cpuBet);
     }
     pot += parseInt(bet);
-    //winnings = winnings-bet;
+    winnings = winnings-bet;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
     document.getElementById("callbutton").disabled = true;
@@ -445,8 +446,8 @@ function cpuChecks()
 
 function cpuRaises(amount)
 {
-    document.getElementById("log").innerHTML += "\nThe CPU raises $".concat(amount.toString()) + ". THe pot now contains $" + pot ;
     pot += parseInt(amount);
+    document.getElementById("log").innerHTML += "\nThe CPU raises $".concat(amount.toString()) + ". THe pot now contains $" + pot ;
     updateUI();
     exposeAndCompareHands();
 }
