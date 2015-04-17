@@ -337,6 +337,27 @@ function check(){
     cpuTakesTurn("check",0);
 }
 
+function call(){
+    var bet = cpuBet;
+    pot += parseInt(bet);
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
+
+
+    document.getElementById("log").innerHTML += "\nYou called $" + bet;
+    updateUI();
+    exposeAndCompareHands();
+}
+
 function raise(){
     var bet = 0;
     while(bet < cpuBet)
@@ -351,14 +372,16 @@ function raise(){
             alert("Must be greater than or equal to previous bet, " + cpuBet);
     }
     pot += parseInt(bet);
-    winnings = winnings-bet;
+    //winnings = winnings-bet;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
 
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 
@@ -375,12 +398,14 @@ function fold(){
     document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
 
     document.getElementById("startbutton").className = "btn active";
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 }
@@ -397,14 +422,16 @@ function cpuOpens()
     console.log("CPU opens");
     cpuBet = getRandomInt(50,250);
     pot += parseInt(cpuBet);
-    document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may RAISE (bet the equivalent or higher) or FOLD (quit).";
+    document.getElementById("log").innerHTML += "\nThe CPU Opens at " + cpuBet +". You may CALL (bet the equivalent), RAISE (bet higher) or FOLD (quit).";
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = false;
     document.getElementById("raisebutton").disabled = false;
     document.getElementById("foldbutton").disabled = false;
 
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn active";
     document.getElementById("raisebutton").className = "btn active";
     document.getElementById("foldbutton").className = "btn active";
     updateUI();
@@ -433,12 +460,14 @@ function cpuFolds()
     document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
 
     document.getElementById("startbutton").className = "btn active";
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 }
@@ -480,8 +509,6 @@ function getHandValue(hand)
         var cardVal = cards[hand[i]].value;
         counts[cardVal-2]++;
     }
-
-    console.log(counts);
 
     //count the number of pairs,threes,and fours
     var pairs = 0, threes = 0, fours = 0;
@@ -600,12 +627,14 @@ function exposeAndCompareHands(){
     document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
 
     document.getElementById("startbutton").className = "btn active";
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 }
@@ -615,12 +644,14 @@ $(document).ready(function(){
     document.getElementById("startbutton").disabled = false;
     document.getElementById("openbutton").disabled = true;
     document.getElementById("checkbutton").disabled = true;
+    document.getElementById("callbutton").disabled = true;
     document.getElementById("raisebutton").disabled = true;
     document.getElementById("foldbutton").disabled = true;
     
     document.getElementById("startbutton").className = "btn active";
     document.getElementById("openbutton").className = "btn disabled";
     document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("callbutton").className = "btn disabled";
     document.getElementById("raisebutton").className = "btn disabled";
     document.getElementById("foldbutton").className = "btn disabled";
 
