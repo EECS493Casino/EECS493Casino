@@ -590,7 +590,7 @@ function exposeAndCompareHands(){
     {
         var cardNumber = cpuHand[i];
         cards[cardNumber].flipped = false;
-        var id = "cpu_card"+i;
+        var id = "cpu_card"+(i+1);
         console.log(id);
         flipCard(id,cardNumber);
     }
