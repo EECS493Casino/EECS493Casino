@@ -469,41 +469,6 @@ function cpuTakesTurn(previousAction,value)
     else{}
 }
 
-function exposeAndCompareHands(){
-    document.getElementById("log").innerHTML += "\nComparing hands...";
-
-    var handValue = getHandValue(playerHand);
-    var cpuHandValue = getHandValue(cpuHand);
-
-    console.log(handValue.name);
-    console.log(cpuHandValue.name);
-
-    if(handValue.value >= cpuHandValue.value){
-        document.getElementById("log").innerHTML += "\nYour hand is better, you get the pot.";
-        winnings += parseInt(pot);
-        pot = 0;
-    }
-    else{
-        document.getElementById("log").innerHTML += "\nCPU hand is better. You don't get the pot.";
-        winnings -= parseInt(pot);
-        pot = 0;
-    }
-
-    updateUI();
-
-    document.getElementById("startbutton").disabled = false;
-    document.getElementById("openbutton").disabled = true;
-    document.getElementById("checkbutton").disabled = true;
-    document.getElementById("raisebutton").disabled = true;
-    document.getElementById("foldbutton").disabled = true;
-
-    document.getElementById("startbutton").className = "btn active";
-    document.getElementById("openbutton").className = "btn disabled";
-    document.getElementById("checkbutton").className = "btn disabled";
-    document.getElementById("raisebutton").className = "btn disabled";
-    document.getElementById("foldbutton").className = "btn disabled";
-}
-
 function getHandValue(hand)
 {
     //count how many times each type of card appears
@@ -513,7 +478,7 @@ function getHandValue(hand)
     for(var i=0; i<5; i++)
     {
         var cardVal = hand[i].value;
-        counts[value-2]++
+        counts[value-2]++;
     }
 
 
@@ -526,7 +491,7 @@ function getHandValue(hand)
         if(counts[i]==3)
             threes++;
         if(counts[i]==4)
-            fours++
+            fours++;
     }
 
     //count how many times a specific suit appears
@@ -546,7 +511,7 @@ function getHandValue(hand)
             suits[3]++;
         else{}
     }
-
+/*
     //FOUR OF A KIND
     //Four cards of the same rank, and one side card
     if(fours==1)
@@ -591,13 +556,48 @@ function getHandValue(hand)
     {
         return({value:2 , name:"ONE PAIR"});
     }
-
+*/
     //default
     return({value:1 , name:"HIGH CARD"});
 
     document.getElementById("startbutton").disabled = false;
     document.getElementById("startbutton").className = "btn active";
     updateUI();
+}
+
+function exposeAndCompareHands(){
+    document.getElementById("log").innerHTML += "\nComparing hands...";
+
+    var handValue = getHandValue(playerHand);
+    var cpuHandValue = getHandValue(cpuHand);
+
+    console.log(handValue.name);
+    console.log(cpuHandValue.name);
+
+    //if(handValue.value >= cpuHandValue.value){
+        document.getElementById("log").innerHTML += "\nYour hand is better, you get the pot.";
+        winnings += parseInt(pot);
+        pot = 0;
+    //}
+    // else{
+    //     document.getElementById("log").innerHTML += "\nCPU hand is better. You don't get the pot.";
+    //     winnings -= parseInt(pot);
+    //     pot = 0;
+    // }
+
+    updateUI();
+
+    document.getElementById("startbutton").disabled = false;
+    document.getElementById("openbutton").disabled = true;
+    document.getElementById("checkbutton").disabled = true;
+    document.getElementById("raisebutton").disabled = true;
+    document.getElementById("foldbutton").disabled = true;
+
+    document.getElementById("startbutton").className = "btn active";
+    document.getElementById("openbutton").className = "btn disabled";
+    document.getElementById("checkbutton").className = "btn disabled";
+    document.getElementById("raisebutton").className = "btn disabled";
+    document.getElementById("foldbutton").className = "btn disabled";
 }
 
 $(document).ready(function(){
