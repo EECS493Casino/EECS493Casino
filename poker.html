@@ -26,9 +26,9 @@
                                 <p>$<span id="winnings">0</span></p>
                             </div>
                         </td>
-                        <td>
+<!--                         <td>
                             <button id="cheatbutton" type="button" onclick="toggleCheating()">Toggle Cheating</button>
-                        </td>
+                        </td> -->
                     </table>                 
 
                     <!--************************************************************-->
@@ -37,14 +37,25 @@
                         <!--LEFT COLUMN CONTENT-->
                         <td> 
                             <!--Buttons the player can use to play the game-->
-                            <table style="width:100%">
+<!--                             <table style="width:100%">
                                 <tr><td><button id="startbutton" type="button" onclick="startRound()" >Begin Round</button></td></tr>
                                 <tr><td><button disabled id="openbutton" type="button" onclick="playeropen()" >Open</button></td></tr>
                                 <tr><td><button disabled id="checkbutton" type="button" onclick="check()">Check</button></td></tr>
                                 <tr><td><button disabled id="callbutton" type="button" onclick="call()">Call</button></td></tr>
                                 <tr><td><button disabled id="raisebutton" type="button" onclick="raise()">Raise</button></td></tr>
                                 <tr><td><button disabled id="foldbutton" type="button" onclick="fold()">Fold</button></td></tr>
-                            </table>
+                            </table> -->
+
+                            <div class="ui-widget-content draggable game-controls">
+                                <button id='startButton' class='btn active' onclick="startRound();">New Round</button>
+                                <button disabled id="openbutton" class='btn disabled' type="button" onclick="playeropen()" >Open</button>
+                                <button disabled id="checkbutton" class='btn disabled' type="button" onclick="check()">Check</button>
+                                <button disabled id="callbutton" class='btn disabled' type="button" onclick="call()">Call</button>
+                                <button disabled id="raisebutton" class='btn disabled' type="button" onclick="raise()">Raise</button>
+                                <button disabled id="foldbutton" class='btn disabled' type="button" onclick="fold()">Fold</button>
+                                <button id="cheatbutton" class='btn active' type="button" onclick="toggleCheating()">CHEATS: OFF</button>
+                            </div>
+
                         </td>
 
                         <!--RIGHT COLUMN CONTENT-->
