@@ -540,7 +540,7 @@ function getHandValue(hand)
     }
 
     //THREE OF A KIND
-    if(threes==1 and pairs!=1)
+    if(threes==1 && pairs!=1)
     {
         return({value:4 , name:"THREE OF A KIND"});
     }
@@ -552,7 +552,7 @@ function getHandValue(hand)
     }
 
     //ONE PAIR
-    if(pairs==1 and threes!=1)
+    if(pairs==1 && threes!=1)
     {
         return({value:2 , name:"ONE PAIR"});
     }
