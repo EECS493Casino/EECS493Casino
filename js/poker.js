@@ -478,7 +478,7 @@ function getHandValue(hand)
     for(var i=0; i<5; i++)
     {
         var cardVal = hand[i].value;
-        counts[value-2]++;
+        counts[cardVal-2]++;
     }
 
 
