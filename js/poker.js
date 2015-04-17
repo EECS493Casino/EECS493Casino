@@ -481,6 +481,7 @@ function getHandValue(hand)
         counts[cardVal-2]++;
     }
 
+    console.log(counts);
 
     //count the number of pairs,threes,and fours
     var pairs = 0, threes = 0, fours = 0;
@@ -493,10 +494,6 @@ function getHandValue(hand)
         if(counts[i]==4)
             fours++;
     }
-
-    console.log("pairs=" + pairs);
-    console.log("threes=" + threes);
-    console.log("fours=" + fours); 
 
     //count how many times a specific suit appears
     var suits = new Array(4);
