@@ -494,6 +494,10 @@ function getHandValue(hand)
             fours++;
     }
 
+    console.log("pairs=" + pairs);
+    console.log("threes=" + threes);
+    console.log("fours=" + fours); 
+
     //count how many times a specific suit appears
     var suits = new Array(4);
     for ( var i = 0; i < 4; i++ )
@@ -591,7 +595,6 @@ function exposeAndCompareHands(){
         var cardNumber = cpuHand[i];
         cards[cardNumber].flipped = false;
         var id = "cpu_card"+(i+1);
-        console.log(id);
         flipCard(id,cardNumber);
     }
 
