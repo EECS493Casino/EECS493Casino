@@ -1,0 +1,134 @@
+#gameWrapper {
+	position: absolute;
+	width: 860px;
+	top: 200px;
+	left: 50%;
+	margin-left: -350px;
+}
+
+#usercards {
+	position: absolute;
+	width: 800px;
+	left: 50%;
+	margin-left: -400px;
+
+} 
+
+#usercards img, #dealercards img, #DeckHolder img {
+  height: 125px;
+  width: 86.25px;
+  padding: 2px;
+}
+
+.handWrapperClass {
+	display: inline-block;
+	margin: 10px;
+}
+
+.playerButtons button {
+	width: 100px;
+	height: 50px;
+	margin: 2px;
+}
+
+.playerButtons {
+	width: 215px;
+	height: 110px;
+}
+ 
+#startGame {
+	height: 50px;
+	width: 150px;
+	font-size: 18px;
+	position: absolute;
+	left: 25px;
+	top: 35px;
+} 
+
+#cheatToggle {
+	height: 50px;
+	width: 150px;
+	font-size: 18px;
+	position: absolute;
+	left: 25px;
+	top: 255px;
+}
+
+.card-container {
+	width: 400px;
+	height: 200px;
+	padding: 20px;
+	margin: 10px;
+	background: none;
+	border: none;
+	color: #fff;
+}
+
+#bankInfoContainer{
+	position: absolute;
+	top: 125px;
+}
+#bankRollBg {
+	background-color: #E3C100;
+	position: absolute;
+	top: -30px;
+	left: 5px;
+	width: 150px;
+	border-radius: 5px;
+	color: #fff;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+#wagerBg {
+	background-color: #E3C100;
+	position: absolute;
+	left: 5px;
+	top: 50px;
+	width: 150px;
+	border-radius: 5px;
+	color: #fff;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.bankAmounts {
+
+}
+
+#sliderWrapper {
+	position: absolute;
+	top: 35px;
+	left: 200px;
+	padding: 12px;
+	border-radius: 5px;
+	background: #E3C100;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+#output {
+	text-align: center;
+	height: 100px;
+	padding: 50px;
+}
+
+#output p {
+	color: #fff;
+	font-size: 40px;
+}
+#wager-slider {
+	height: 250px;
+}
+
+.game-controls {
+	position: absolute;
+	top: 375px;
+	left: 25px;
+	width: 265px;
+	height: 350px;
+	padding: 20px;
+	border-radius: 40px;
+	background: none;
+	border: none;
+}
